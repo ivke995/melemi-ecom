@@ -1,4 +1,5 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
+import logo from "./Screenshot_from_2025-10-16_17-59-53-removebg-preview.png"
 import search_icon from "./search_icon.svg";
 import user_icon from "./user_icon.svg";
 import cart_icon from "./cart_icon.svg";
