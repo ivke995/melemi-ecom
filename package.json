@@ -16,7 +16,7 @@
     "cloudinary": "^2.7.0",
     "inngest": "^3.44.2",
     "mongoose": "^8.18.3",
-    "next": "^15.5.4",
+    "next": "15.5.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.1",
