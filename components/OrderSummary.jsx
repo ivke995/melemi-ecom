@@ -24,7 +24,7 @@ const OrderSummary = () => {
     try {
       const token = await getToken();
       const { data } = await axios.get("/api/user/get-address", {
-        heaaders: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (data.success) {
         setUserAddresses(data.addresses);

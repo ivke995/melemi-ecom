@@ -1,3 +1,4 @@
+import connectDB from "@/config/db";
 import { inngest } from "@/config/inngest";
 import Product from "@/models/Product";
 import User from "@/models/User";
@@ -6,7 +7,8 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { userId } = getAuth();
+    const { userId } = getAuth(request);
+    await connectDB();
     const { address, items } = await request.json();
     if (!address || items.length === 0) {
       return NextResponse.json({ success: false, message: "Invalid data" });
@@ -35,8 +37,6 @@ export async function POST(request) {
 
     return NextResponse.json({ success: true, message: "Order Placed" });
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log("error");
-    return NextResponse.json({ success: true, message: error.message });
+    return NextResponse.json({ success: false, message: error.message });
   }
 }
