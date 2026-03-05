@@ -44,7 +44,7 @@ const Orders = () => {
         <Loading />
       ) : (
         <div className="md:p-10 p-4 space-y-5">
-          <h2 className="text-lg font-medium">Orders</h2>
+          <h2 className="text-lg font-medium">Narudžbe</h2>
           <div className="max-w-4xl rounded-md">
             {orders.map((order, index) => (
               <div
@@ -65,7 +65,7 @@ const Orders = () => {
                         )
                         .join(", ")}
                     </span>
-                    <span>Items : {order.items.length}</span>
+                    <span>Stavke: {order.items.length}</span>
                   </p>
                 </div>
                 <div>
@@ -87,11 +87,11 @@ const Orders = () => {
                 </p>
                 <div>
                   <p className="flex flex-col">
-                    <span>Method : COD</span>
+                    <span>Način: Pouzećem</span>
                     <span>
-                      Date : {new Date(order.date).toLocaleDateString()}
+                      Datum: {new Date(order.date).toLocaleDateString()}
                     </span>
-                    <span>Payment : Pending</span>
+                    <span>Plaćanje: Na čekanju</span>
                   </p>
                 </div>
               </div>

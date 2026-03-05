@@ -46,14 +46,14 @@ const AddAddress = () => {
       <div className="px-6 md:px-16 lg:px-32 py-16 flex flex-col md:flex-row justify-between">
         <form onSubmit={onSubmitHandler} className="w-full">
           <p className="text-2xl md:text-3xl text-gray-500">
-            Add Shipping{" "}
-            <span className="font-semibold text-orange-600">Address</span>
+            Dodaj adresu{" "}
+            <span className="font-semibold text-orange-600">za dostavu</span>
           </p>
           <div className="space-y-3 max-w-sm mt-10">
             <input
               className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
               type="text"
-              placeholder="Full name"
+              placeholder="Puno ime"
               onChange={(e) =>
                 setAddress({ ...address, fullName: e.target.value })
               }
@@ -62,7 +62,7 @@ const AddAddress = () => {
             <input
               className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
               type="text"
-              placeholder="Phone number"
+              placeholder="Broj telefona"
               onChange={(e) =>
                 setAddress({ ...address, phoneNumber: e.target.value })
               }
@@ -71,7 +71,7 @@ const AddAddress = () => {
             <input
               className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
               type="text"
-              placeholder="Pin code"
+              placeholder="Poštanski broj"
               onChange={(e) =>
                 setAddress({ ...address, pincode: e.target.value })
               }
@@ -81,7 +81,7 @@ const AddAddress = () => {
               className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500 resize-none"
               type="text"
               rows={4}
-              placeholder="Address (Area and Street)"
+              placeholder="Adresa (naselje i ulica)"
               onChange={(e) => setAddress({ ...address, area: e.target.value })}
               value={address.area}
             ></textarea>
@@ -89,7 +89,7 @@ const AddAddress = () => {
               <input
                 className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
                 type="text"
-                placeholder="City/District/Town"
+                placeholder="Grad/Opština"
                 onChange={(e) =>
                   setAddress({ ...address, city: e.target.value })
                 }
@@ -98,7 +98,7 @@ const AddAddress = () => {
               <input
                 className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
                 type="text"
-                placeholder="State"
+                placeholder="Država"
                 onChange={(e) =>
                   setAddress({ ...address, state: e.target.value })
                 }
@@ -110,7 +110,7 @@ const AddAddress = () => {
             type="submit"
             className="max-w-sm w-full mt-6 bg-orange-600 text-white py-3 hover:bg-orange-700 uppercase"
           >
-            Save address
+            Sačuvaj adresu
           </button>
         </form>
         <Image

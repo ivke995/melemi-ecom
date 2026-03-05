@@ -11,7 +11,7 @@ export async function POST(request) {
     await connectDB();
     const { address, items } = await request.json();
     if (!address || items.length === 0) {
-      return NextResponse.json({ success: false, message: "Invalid data" });
+      return NextResponse.json({ success: false, message: "Neispravni podaci" });
     }
     // calculate amount using items
     const amount = await items.reduce(async (acc, item) => {
@@ -35,7 +35,7 @@ export async function POST(request) {
     user.cartItems = {};
     await user.save();
 
-    return NextResponse.json({ success: true, message: "Order Placed" });
+    return NextResponse.json({ success: true, message: "Narudžba je kreirana" });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message });
   }

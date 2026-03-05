@@ -20,16 +20,16 @@ const Navbar = () => {
       />
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
         <Link href="/" className="hover:text-gray-900 transition">
-          Home
+          Početna
         </Link>
         <Link href="/all-products" className="hover:text-gray-900 transition">
-          Shop
+          Prodavnica
         </Link>
         <Link href="/" className="hover:text-gray-900 transition">
-          About Us
+          O nama
         </Link>
         <Link href="/" className="hover:text-gray-900 transition">
-          Contact
+          Kontakt
         </Link>
 
         {isSeller && (
@@ -37,7 +37,7 @@ const Navbar = () => {
             onClick={() => router.push("/seller")}
             className="text-xs border px-4 py-1.5 rounded-full"
           >
-            Seller Dashboard
+            Panel prodavca
           </button>
         )}
       </div>
@@ -48,27 +48,27 @@ const Navbar = () => {
           <UserButton>
             <UserButton.MenuItems>
               <UserButton.Action
-                label="Cart"
+                label="Korpa"
                 labelIcon={<CartIcon />}
                 onClick={() => router.push("/cart")}
               />
             </UserButton.MenuItems>
             <UserButton.MenuItems>
               <UserButton.Action
-                label="My Orders"
+                label="Moje narudžbe"
                 labelIcon={<BagIcon />}
                 onClick={() => router.push("/my-orders")}
               />
             </UserButton.MenuItems>
           </UserButton>
         ) : (
-          <button
-            onClick={openSignIn}
-            className="flex items-center gap-2 hover:text-gray-900 transition"
-          >
-            <Image src={assets.user_icon} alt="user icon" />
-            Account
-          </button>
+            <button
+              onClick={openSignIn}
+              className="flex items-center gap-2 hover:text-gray-900 transition"
+            >
+              <Image src={assets.user_icon} alt="user icon" />
+              Nalog
+            </button>
         )}
       </ul>
 
@@ -78,48 +78,48 @@ const Navbar = () => {
             onClick={() => router.push("/seller")}
             className="text-xs border px-4 py-1.5 rounded-full"
           >
-            Seller Dashboard
+            Panel prodavca
           </button>
         )}
         {user ? (
           <UserButton>
             <UserButton.MenuItems>
               <UserButton.Action
-                label="Home"
+                label="Početna"
                 labelIcon={<HomeIcon />}
                 onClick={() => router.push("/")}
               />
             </UserButton.MenuItems>
             <UserButton.MenuItems>
               <UserButton.Action
-                label="Products"
+                label="Proizvodi"
                 labelIcon={<BoxIcon />}
                 onClick={() => router.push("/all-product")}
               />
             </UserButton.MenuItems>
             <UserButton.MenuItems>
               <UserButton.Action
-                label="Cart"
+                label="Korpa"
                 labelIcon={<CartIcon />}
                 onClick={() => router.push("/cart")}
               />
             </UserButton.MenuItems>
             <UserButton.MenuItems>
               <UserButton.Action
-                label="My Orders"
+                label="Moje narudžbe"
                 labelIcon={<BagIcon />}
                 onClick={() => router.push("/my-orders")}
               />
             </UserButton.MenuItems>
           </UserButton>
         ) : (
-          <button
-            onClick={openSignIn}
-            className="flex items-center gap-2 hover:text-gray-900 transition"
-          >
-            <Image src={assets.user_icon} alt="user icon" />
-            Account
-          </button>
+            <button
+              onClick={openSignIn}
+              className="flex items-center gap-2 hover:text-gray-900 transition"
+            >
+              <Image src={assets.user_icon} alt="user icon" />
+              Nalog
+            </button>
         )}
       </div>
     </nav>

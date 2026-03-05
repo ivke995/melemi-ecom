@@ -8,13 +8,13 @@ const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export const metadata = {
   title: "Bojana Melemi",
-  description: "Bojana Melemi website je mjesto gdje cete pronaci sve za njegu tijela ",
+  description: "Bojana Melemi veb-sajt je mjesto gdje ćete pronaći sve za njegu tijela.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="sr-Latn">
         <body className={`${outfit.className} antialiased text-gray-700`}>
           <Toaster />
           <AppContextProvider>{children}</AppContextProvider>

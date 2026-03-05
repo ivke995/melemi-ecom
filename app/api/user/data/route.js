@@ -9,7 +9,7 @@ export async function GET(request) {
     await connectDB();
     const user = await User.findById(userId);
     if (!user) {
-      return NextResponse.json({ success: false, message: "User Not Found" });
+      return NextResponse.json({ success: false, message: "Korisnik nije pronađen" });
     }
     return NextResponse.json({ success: true, user });
   } catch (error) {

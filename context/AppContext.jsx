@@ -74,7 +74,7 @@ export const AppContextProvider = (props) => {
           { cartData },
           { headers: { Authorization: `Bearer ${token}` } },
         );
-        toast.success("Item added to cart");
+        toast.success("Stavka je dodata u korpu");
       } catch (error) {
         toast.error(error.message);
       }
@@ -98,7 +98,7 @@ export const AppContextProvider = (props) => {
           { cartData },
           { headers: { Authorization: `Bearer ${token}` } },
         );
-        toast.success("Cart updated");
+        toast.success("Korpa je ažurirana");
       } catch (error) {
         toast.error(error.message);
       }

@@ -17,7 +17,7 @@ export async function POST(request) {
     const { userId } = getAuth(request);
     const isSeller = await authSeller(userId);
     if (!isSeller) {
-      return NextResponse.json({ success: false, message: "not authorized" });
+      return NextResponse.json({ success: false, message: "Niste ovlašćeni" });
     }
 
     const formData = await request.formData();
@@ -31,7 +31,7 @@ export async function POST(request) {
     if (!files || files.length === 0) {
       return NextResponse.json({
         success: false,
-        message: "no files uploaded",
+        message: "Nema otpremljenih fajlova",
       });
     }
 
@@ -70,7 +70,7 @@ export async function POST(request) {
     });
     return NextResponse.json({
       success: true,
-      message: "Upload successfull",
+      message: "Otpremanje uspješno",
       newProduct,
     });
   } catch (error) {

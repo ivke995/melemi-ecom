@@ -47,7 +47,7 @@ const OrderSummary = () => {
   const createOrder = async () => {
     try {
       if (!selectedAddress) {
-        return toast.error("Please select address");
+        return toast.error("Molimo izaberite adresu");
       }
 
       let cartItemsArray = Object.keys(cartItems).map((key) => ({
@@ -57,7 +57,7 @@ const OrderSummary = () => {
       cartItemsArray = cartItemsArray.filter((item) => item.quantity > 0);
 
       if (cartItems.length === 0) {
-        return toast.error("Cart is empty");
+        return toast.error("Korpa je prazna");
       }
 
       const token = await getToken();
@@ -93,13 +93,13 @@ const OrderSummary = () => {
   return (
     <div className="w-full md:w-96 bg-gray-500/5 p-5">
       <h2 className="text-xl md:text-2xl font-medium text-gray-700">
-        Order Summary
+        Pregled narudžbe
       </h2>
       <hr className="border-gray-500/30 my-5" />
       <div className="space-y-6">
         <div>
           <label className="text-base font-medium uppercase text-gray-600 block mb-2">
-            Select Address
+            Izaberite adresu
           </label>
           <div className="relative inline-block w-full text-sm border">
             <button
@@ -109,7 +109,7 @@ const OrderSummary = () => {
               <span>
                 {selectedAddress
                   ? `${selectedAddress.fullName}, ${selectedAddress.area}, ${selectedAddress.city}, ${selectedAddress.state}`
-                  : "Select Address"}
+                  : "Izaberite adresu"}
               </span>
               <svg
                 className={`w-5 h-5 inline float-right transition-transform duration-200 ${isDropdownOpen ? "rotate-0" : "-rotate-90"}`}
@@ -143,7 +143,7 @@ const OrderSummary = () => {
                   onClick={() => router.push("/add-address")}
                   className="px-4 py-2 hover:bg-gray-500/10 cursor-pointer text-center"
                 >
-                  + Add New Address
+                  + Dodaj novu adresu
                 </li>
               </ul>
             )}
@@ -152,16 +152,16 @@ const OrderSummary = () => {
 
         <div>
           <label className="text-base font-medium uppercase text-gray-600 block mb-2">
-            Promo Code
+            Promo kod
           </label>
           <div className="flex flex-col items-start gap-3">
             <input
               type="text"
-              placeholder="Enter promo code"
+              placeholder="Unesite promo kod"
               className="flex-grow w-full outline-none p-2.5 text-gray-600 border"
             />
             <button className="bg-orange-600 text-white px-9 py-2 hover:bg-orange-700">
-              Apply
+              Primijeni
             </button>
           </div>
         </div>
@@ -170,25 +170,25 @@ const OrderSummary = () => {
 
         <div className="space-y-4">
           <div className="flex justify-between text-base font-medium">
-            <p className="uppercase text-gray-600">Items {getCartCount()}</p>
+            <p className="uppercase text-gray-600">Stavke {getCartCount()}</p>
             <p className="text-gray-800">
               {currency}
               {getCartAmount()}
             </p>
           </div>
           <div className="flex justify-between">
-            <p className="text-gray-600">Shipping Fee</p>
-            <p className="font-medium text-gray-800">Free</p>
+            <p className="text-gray-600">Trošak dostave</p>
+            <p className="font-medium text-gray-800">Besplatno</p>
           </div>
           <div className="flex justify-between">
-            <p className="text-gray-600">Tax (2%)</p>
+            <p className="text-gray-600">Porez (2%)</p>
             <p className="font-medium text-gray-800">
               {currency}
               {Math.floor(getCartAmount() * 0.02)}
             </p>
           </div>
           <div className="flex justify-between text-lg md:text-xl font-medium border-t pt-3">
-            <p>Total</p>
+            <p>Ukupno</p>
             <p>
               {currency}
               {getCartAmount() + Math.floor(getCartAmount() * 0.02)}
@@ -201,7 +201,7 @@ const OrderSummary = () => {
         onClick={createOrder}
         className="w-full bg-orange-600 text-white py-3 mt-5 hover:bg-orange-700"
       >
-        Place Order
+        Naruči
       </button>
     </div>
   );

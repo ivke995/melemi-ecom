@@ -13,7 +13,7 @@ export async function POST(request) {
 
     return NextResponse.json({
       success: true,
-      message: "Address added successfully",
+      message: "Adresa je uspješno dodata",
       newAddress,
     });
   } catch (error) {

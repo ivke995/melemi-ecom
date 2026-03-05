@@ -3,8 +3,8 @@ import { assets } from "./assets";
 export const products = [
   {
     id: 1,
-    name: "Apple Earphones",
-    description: "Noise-cancellation, 40-hour battery",
+    name: "Apple slušalice",
+    description: "Poništavanje buke, baterija 40 sati",
     rating: 4.5,
     price: "$299.99",
     imgSrc: assets.apple_earphone_image,
@@ -12,7 +12,7 @@ export const products = [
   {
     id: 2,
     name: "Bose QuietComfort 45",
-    description: "Noise Cancellation, 24-hour battery",
+    description: "Poništavanje buke, baterija 24 sata",
     rating: 4.5,
     price: "$329.99",
     imgSrc: assets.bose_headphone_image,
@@ -20,7 +20,7 @@ export const products = [
   {
     id: 3,
     name: "Samsung Galaxy S23",
-    description: "Fitness Tracking, AMOLED Display",
+    description: "Praćenje fitnesa, AMOLED ekran",
     rating: 4.5,
     price: "$799.99",
     imgSrc: assets.samsung_s23phone_image,
@@ -28,7 +28,7 @@ export const products = [
   {
     id: 4,
     name: "Garmin Venu 2",
-    description: "Noise Cancellation, 24-hour battery",
+    description: "Poništavanje buke, baterija 24 sata",
     rating: 4.5,
     price: "$349.99",
     imgSrc: assets.venu_watch_image,
@@ -36,7 +36,7 @@ export const products = [
   {
     id: 5,
     name: "PlayStation 5",
-    description: "Ultra-HD, 825GB SSD, Ray Graphics",
+    description: "Ultra-HD, 825GB SSD, ray tracing grafika",
     rating: 4.5,
     price: "$499.99",
     imgSrc: assets.apple_earphone_image,
@@ -44,7 +44,7 @@ export const products = [
   {
     id: 6,
     name: "Canon EOS R5",
-    description: "45MP Sensor, 8K Video Recording",
+    description: "45MP senzor, 8K video snimanje",
     rating: 4.5,
     price: "$3,899.99",
     imgSrc: assets.cannon_camera_image,
@@ -52,7 +52,7 @@ export const products = [
   {
     id: 7,
     name: "MacBook Pro 16",
-    description: "M2 Pro Chip, 16GB RAM, 512GB SSD",
+    description: "M2 Pro čip, 16GB RAM, 512GB SSD",
     rating: 4.5,
     price: "$2,499.99",
     imgSrc: assets.macbook_image,
@@ -60,15 +60,15 @@ export const products = [
   {
     id: 8,
     name: "Sony WF-1000XM5",
-    description: "Noise-Cancellation, Hi-Res Audio",
+    description: "Poništavanje buke, Hi-Res audio",
     rating: 4.5,
     price: "$299.99",
     imgSrc: assets.sony_airbuds_image,
   },
   {
     id: 9,
-    name: "Samsung Projector 4k",
-    description: "4K Ultra HD, Realistic, Built-In Speaker",
+    name: "Samsung projektor 4K",
+    description: "4K Ultra HD, realističan prikaz, ugrađeni zvučnik",
     rating: 4.5,
     price: "$1,499.99",
     imgSrc: assets.projector_image,
@@ -83,8 +83,8 @@ export const products = [
   },
   {
     id: 11,
-    name: "Apple Earphones",
-    description: "Noise-cancellation, 40-hour battery",
+    name: "Apple slušalice",
+    description: "Poništavanje buke, baterija 40 sati",
     rating: 4.5,
     price: "$299.99",
     imgSrc: assets.apple_earphone_image,
@@ -92,7 +92,7 @@ export const products = [
   {
     id: 12,
     name: "Bose QuietComfort 45",
-    description: "Noise Cancellation, 24-hour battery",
+    description: "Poništavanje buke, baterija 24 sata",
     rating: 4.5,
     price: "$329.99",
     imgSrc: assets.bose_headphone_image,
@@ -100,7 +100,7 @@ export const products = [
   {
     id: 13,
     name: "Samsung Galaxy S23",
-    description: "Fitness Tracking, AMOLED Display",
+    description: "Praćenje fitnesa, AMOLED ekran",
     rating: 4.5,
     price: "$799.99",
     imgSrc: assets.samsung_s23phone_image,
@@ -108,7 +108,7 @@ export const products = [
   {
     id: 14,
     name: "Garmin Venu 2",
-    description: "Noise Cancellation, 24-hour battery",
+    description: "Poništavanje buke, baterija 24 sata",
     rating: 4.5,
     price: "$349.99",
     imgSrc: assets.venu_watch_image,
@@ -116,7 +116,7 @@ export const products = [
   {
     id: 15,
     name: "PlayStation 5",
-    description: "Ultra-HD, 825GB SSD, Ray Graphics",
+    description: "Ultra-HD, 825GB SSD, ray tracing grafika",
     rating: 4.5,
     price: "$499.99",
     imgSrc: assets.apple_earphone_image,
@@ -124,7 +124,7 @@ export const products = [
   {
     id: 16,
     name: "Canon EOS R5",
-    description: "45MP Sensor, 8K Video Recording",
+    description: "45MP senzor, 8K video snimanje",
     rating: 4.5,
     price: "$3,899.99",
     imgSrc: assets.cannon_camera_image,
@@ -132,7 +132,7 @@ export const products = [
   {
     id: 17,
     name: "MacBook Pro 16",
-    description: "M2 Pro Chip, 16GB RAM, 512GB SSD",
+    description: "M2 Pro čip, 16GB RAM, 512GB SSD",
     rating: 4.5,
     price: "$2,499.99",
     imgSrc: assets.macbook_image,
@@ -140,15 +140,15 @@ export const products = [
   {
     id: 18,
     name: "Sony WF-1000XM5",
-    description: "Noise-Cancellation, Hi-Res Audio",
+    description: "Poništavanje buke, Hi-Res audio",
     rating: 4.5,
     price: "$299.99",
     imgSrc: assets.sony_airbuds_image,
   },
   {
     id: 19,
-    name: "Samsung Projector 4k",
-    description: "4K Ultra HD, Realistic, Built-In Speaker",
+    name: "Samsung projektor 4K",
+    description: "4K Ultra HD, realističan prikaz, ugrađeni zvučnik",
     rating: 4.5,
     price: "$1,499.99",
     imgSrc: assets.projector_image,

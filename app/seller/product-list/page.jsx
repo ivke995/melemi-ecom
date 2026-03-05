@@ -8,6 +8,16 @@ import Loading from "@/components/Loading";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+const categoryLabels = {
+  Earphone: "Slušalice (in-ear)",
+  Headphone: "Slušalice (over-ear)",
+  Watch: "Sat",
+  Smartphone: "Pametni telefon",
+  Laptop: "Laptop",
+  Camera: "Kamera",
+  Accessories: "Dodaci",
+};
+
 const ProductList = () => {
   const { router, getToken, user } = useAppContext();
 
@@ -43,20 +53,20 @@ const ProductList = () => {
         <Loading />
       ) : (
         <div className="w-full md:p-10 p-4">
-          <h2 className="pb-4 text-lg font-medium">All Product</h2>
+          <h2 className="pb-4 text-lg font-medium">Svi proizvodi</h2>
           <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
             <table className=" table-fixed w-full overflow-hidden">
               <thead className="text-gray-900 text-sm text-left">
                 <tr>
                   <th className="w-2/3 md:w-2/5 px-4 py-3 font-medium truncate">
-                    Product
+                    Proizvod
                   </th>
                   <th className="px-4 py-3 font-medium truncate max-sm:hidden">
-                    Category
+                    Kategorija
                   </th>
-                  <th className="px-4 py-3 font-medium truncate">Price</th>
+                  <th className="px-4 py-3 font-medium truncate">Cijena</th>
                   <th className="px-4 py-3 font-medium truncate max-sm:hidden">
-                    Action
+                    Akcija
                   </th>
                 </tr>
               </thead>
@@ -76,7 +86,7 @@ const ProductList = () => {
                       <span className="truncate w-full">{product.name}</span>
                     </td>
                     <td className="px-4 py-3 max-sm:hidden">
-                      {product.category}
+                      {categoryLabels[product.category] || product.category}
                     </td>
                     <td className="px-4 py-3">${product.offerPrice}</td>
                     <td className="px-4 py-3 max-sm:hidden">
@@ -84,7 +94,7 @@ const ProductList = () => {
                         onClick={() => router.push(`/product/${product._id}`)}
                         className="flex items-center gap-1 px-1.5 md:px-3.5 py-2 bg-orange-600 text-white rounded-md"
                       >
-                        <span className="hidden md:block">Visit</span>
+                        <span className="hidden md:block">Posjeti</span>
                         <Image
                           className="h-3.5"
                           src={assets.redirect_icon}

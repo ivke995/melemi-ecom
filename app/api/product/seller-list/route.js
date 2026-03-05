@@ -10,7 +10,7 @@ export async function GET(request) {
     const isSeller = authSeller(userId);
 
     if (!isSeller) {
-      return NextResponse.json({ successs: false, message: "not authorized" });
+      return NextResponse.json({ successs: false, message: "Niste ovlašćeni" });
     }
 
     await connectDB();

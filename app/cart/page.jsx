@@ -17,25 +17,25 @@ const Cart = () => {
         <div className="flex-1">
           <div className="flex items-center justify-between mb-8 border-b border-gray-500/30 pb-6">
             <p className="text-2xl md:text-3xl text-gray-500">
-              Your <span className="font-medium text-orange-600">Cart</span>
+              Vaša <span className="font-medium text-orange-600">korpa</span>
             </p>
-            <p className="text-lg md:text-xl text-gray-500/80">{getCartCount()} Items</p>
+            <p className="text-lg md:text-xl text-gray-500/80">{getCartCount()} stavki</p>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full table-auto">
               <thead className="text-left">
                 <tr>
                   <th className="text-nowrap pb-6 md:px-4 px-1 text-gray-600 font-medium">
-                    Product Details
+                    Detalji proizvoda
                   </th>
                   <th className="pb-6 md:px-4 px-1 text-gray-600 font-medium">
-                    Price
+                    Cijena
                   </th>
                   <th className="pb-6 md:px-4 px-1 text-gray-600 font-medium">
-                    Quantity
+                    Količina
                   </th>
                   <th className="pb-6 md:px-4 px-1 text-gray-600 font-medium">
-                    Subtotal
+                    Međuzbir
                   </th>
                 </tr>
               </thead>
@@ -62,7 +62,7 @@ const Cart = () => {
                             className="md:hidden text-xs text-orange-600 mt-1"
                             onClick={() => updateCartQuantity(product._id, 0)}
                           >
-                            Remove
+                            Ukloni
                           </button>
                         </div>
                         <div className="text-sm hidden md:block">
@@ -71,7 +71,7 @@ const Cart = () => {
                             className="text-xs text-orange-600 mt-1"
                             onClick={() => updateCartQuantity(product._id, 0)}
                           >
-                            Remove
+                            Ukloni
                           </button>
                         </div>
                       </td>
@@ -108,7 +108,7 @@ const Cart = () => {
               src={assets.arrow_right_icon_colored}
               alt="arrow_right_icon_colored"
             />
-            Continue Shopping
+            Nastavi kupovinu
           </button>
         </div>
         <OrderSummary />

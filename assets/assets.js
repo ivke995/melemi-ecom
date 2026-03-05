@@ -136,7 +136,7 @@ export const productsDummyData = [
     "_id": "67a1f4e43f34a77b6dde9144",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Apple AirPods Pro 2nd gen",
-    "description": "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) provide excellent sound, active noise cancellation, and a comfortable fit. The USB-C case ensures quick charging, and they pair seamlessly with Apple devices for an effortless audio experience.",
+    "description": "Apple AirPods Pro (2. generacija) sa MagSafe futrolom (USB-C) nude odličan zvuk, aktivno poništavanje buke i udobno pristajanje. USB-C futrola omogućava brzo punjenje, a slušalice se besprijekorno povezuju s Apple uređajima za bezbrižno audio iskustvo.",
     "price": 499.99,
     "offerPrice": 399.99,
     "image": [
@@ -153,7 +153,7 @@ export const productsDummyData = [
     "_id": "67a1f52e3f34a77b6dde914a",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Bose QuietComfort 45",
-    "description": "The Bose QuietComfort 45 headphones are engineered for exceptional sound quality and unparalleled noise cancellation. With a 24-hour battery life and comfortable, lightweight design, these headphones deliver premium audio for any environment. Whether on a flight, in the office, or at home, the Bose QC45 blocks out distractions, offering an immersive listening experience.",
+    "description": "Slušalice Bose QuietComfort 45 projektovane su za izuzetan kvalitet zvuka i neuporedivo poništavanje buke. Uz 24 sata trajanja baterije i udoban, lagan dizajn, ove slušalice pružaju vrhunski zvuk u svakom okruženju. Bilo da ste u avionu, kancelariji ili kod kuće, Bose QC45 uklanja ometanja i pruža imerzivno iskustvo slušanja.",
     "price": 429.99,
     "offerPrice": 329.99,
     "image": [
@@ -167,7 +167,7 @@ export const productsDummyData = [
     "_id": "67a1f5663f34a77b6dde914c",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Samsung Galaxy S23",
-    "description": "The Samsung Galaxy S23 offers an all-encompassing mobile experience with its advanced AMOLED display, offering vibrant visuals and smooth interactions. Equipped with top-of-the-line fitness tracking features and cutting-edge technology, this phone delivers outstanding performance. With powerful hardware, a sleek design, and long battery life, the S23 is perfect for those who demand the best in mobile innovation.",
+    "description": "Samsung Galaxy S23 nudi sveobuhvatno mobilno iskustvo uz napredni AMOLED ekran, živopisne prikaze i glatke interakcije. Opremljen vrhunskim opcijama za praćenje fitnesa i najsavremenijom tehnologijom, ovaj telefon pruža izvanredne performanse. Uz snažan hardver, elegantan dizajn i dug vijek trajanja baterije, S23 je savršen za one koji traže najbolje u mobilnim inovacijama.",
     "price": 899.99,
     "offerPrice": 799.99,
     "image": [
@@ -181,7 +181,7 @@ export const productsDummyData = [
     "_id": "67a1f5993f34a77b6dde914e",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Garmin Venu 2",
-    "description": "The Garmin Venu 2 smartwatch blends advanced fitness tracking with sophisticated design, offering a wealth of features such as heart rate monitoring, GPS, and sleep tracking. Built with a 24-hour battery life, this watch is ideal for fitness enthusiasts and anyone looking to enhance their daily lifestyle. With a stunning AMOLED display and customizable watch faces, the Venu 2 combines technology with style seamlessly.",
+    "description": "Garmin Venu 2 pametni sat spaja napredno praćenje fitnesa sa sofisticiranim dizajnom, nudeći funkcije poput mjerenja pulsa, GPS-a i praćenja sna. Sa baterijom koja traje do 24 sata, idealan je za entuzijaste fitnesa i sve koji žele poboljšati svakodnevni stil života. Uz upečatljiv AMOLED ekran i prilagodljive izglede sata, Venu 2 besprijekorno spaja tehnologiju i stil.",
     "price": 399.99,
     "offerPrice": 349.99,
     "image": [
@@ -195,7 +195,7 @@ export const productsDummyData = [
     "_id": "67a1f5ef3f34a77b6dde9150",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "PlayStation 5",
-    "description": "The PlayStation 5 takes gaming to the next level with ultra-HD graphics, a powerful 825GB SSD, and ray tracing technology for realistic visuals. Whether you're into high-action games or immersive storytelling, the PS5 delivers fast loading times, seamless gameplay, and stunning visuals. It's a must-have for any serious gamer looking for the ultimate gaming experience.",
+    "description": "PlayStation 5 podiže gejming na viši nivo uz ultra-HD grafiku, moćni 825GB SSD i ray tracing tehnologiju za realistične prikaze. Bilo da volite akciju ili imerzivne priče, PS5 donosi brzo učitavanje, glatku igru i zadivljujuće vizuale. Neophodan je za svakog ozbiljnog gejmera koji želi vrhunsko iskustvo.",
     "price": 599.99,
     "offerPrice": 499.99,
     "image": [
@@ -209,7 +209,7 @@ export const productsDummyData = [
     "_id": "67a1f70c3f34a77b6dde9156",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Canon EOS R5",
-    "description": "The Canon EOS R5 is a game-changing mirrorless camera with a 45MP full-frame sensor, offering ultra-high resolution and the ability to shoot 8K video. Whether you're capturing professional-quality stills or cinematic video footage, this camera delivers exceptional clarity, speed, and color accuracy. With advanced autofocus and in-body stabilization, the R5 is ideal for photographers and videographers alike.",
+    "description": "Canon EOS R5 je revolucionarna mirrorless kamera sa 45MP full-frame senzorom, koja nudi ultra-visoku rezoluciju i mogućnost snimanja 8K videa. Bilo da snimate profesionalne fotografije ili filmske kadrove, ova kamera pruža izuzetnu oštrinu, brzinu i tačnost boja. Uz napredni autofokus i stabilizaciju u tijelu, R5 je idealna za fotografe i videografe.",
     "price": 4199.99,
     "offerPrice": 3899.99,
     "image": [
@@ -223,7 +223,7 @@ export const productsDummyData = [
     "_id": "67a1f7c93f34a77b6dde915a",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "MacBook Pro 16",
-    "description": "The MacBook Pro 16, powered by Apple's M2 Pro chip, offers outstanding performance with 16GB RAM and a 512GB SSD. Whether you're editing high-resolution video, developing software, or multitasking with ease, this laptop can handle the toughest tasks. It features a stunning Retina display with True Tone technology, making it a top choice for professionals in creative industries or anyone who demands premium performance in a portable form.",
+    "description": "MacBook Pro 16, pokretan Apple M2 Pro čipom, pruža izvanredne performanse uz 16GB RAM-a i 512GB SSD. Bilo da montirate video visoke rezolucije, razvijate softver ili multitaskujete bez napora, ovaj laptop se nosi i s najzahtjevnijim zadacima. Ima zadivljujući Retina ekran s True Tone tehnologijom, pa je odličan izbor za kreativne profesionalce i sve koji traže vrhunske performanse u prenosivom formatu.",
     "price": 2799.99,
     "offerPrice": 2499.99,
     "image": [
@@ -237,7 +237,7 @@ export const productsDummyData = [
     "_id": "67a1f8363f34a77b6dde915c",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Sony WF-1000XM5",
-    "description": "Sony WF-1000XM5 true wireless earbuds deliver immersive sound with Hi-Res Audio and advanced noise cancellation technology. Designed for comfort and quality, they provide a stable, snug fit for a secure listening experience. Whether you're working out or traveling, these earbuds will keep you connected with the world around you while enjoying rich, clear sound.",
+    "description": "Sony WF-1000XM5 true wireless slušalice pružaju imerzivan zvuk uz Hi-Res Audio i naprednu tehnologiju poništavanja buke. Dizajnirane za udobnost i kvalitet, nude stabilno i sigurno prijanjanje. Bilo da trenirate ili putujete, ove slušalice vas drže povezanima sa svijetom oko vas dok uživate u bogatom, čistom zvuku.",
     "price": 349.99,
     "offerPrice": 299.99,
     "image": [
@@ -251,7 +251,7 @@ export const productsDummyData = [
     "_id": "67a1f85e3f34a77b6dde915e",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "Samsung Projector 4k",
-    "description": "The Samsung 4K Projector offers an immersive cinematic experience with ultra-high-definition visuals and realistic color accuracy. Equipped with a built-in speaker, it delivers rich sound quality to complement its stunning 4K resolution. Perfect for movie nights, gaming, or presentations, this projector is the ultimate choice for creating an at-home theater experience or professional setting.",
+    "description": "Samsung 4K projektor pruža imerzivno bioskopsko iskustvo uz ultra-visoku rezoluciju i realističnu tačnost boja. Sa ugrađenim zvučnikom isporučuje bogat zvuk koji prati zadivljujući 4K prikaz. Idealan je za filmske večeri, gejming ili prezentacije, te je odličan izbor za kućni bioskop ili profesionalno okruženje.",
     "price": 1699.99,
     "offerPrice": 1499.99,
     "image": [
@@ -265,7 +265,7 @@ export const productsDummyData = [
     "_id": "67a1fa4b3f34a77b6dde9166",
     "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
     "name": "ASUS ROG Zephyrus G16",
-    "description": "The ASUS ROG Zephyrus G16 gaming laptop is powered by the Intel Core i9 processor and features an RTX 4070 GPU, delivering top-tier gaming and performance. With 16GB of RAM and a 1TB SSD, this laptop is designed for gamers who demand extreme power, speed, and storage. Equipped with a stunning 16-inch display, it's built to handle the most demanding titles and applications with ease.",
+    "description": "Gejming laptop ASUS ROG Zephyrus G16 pokreće Intel Core i9 procesor i RTX 4070 GPU, pružajući vrhunske performanse. Sa 16GB RAM-a i 1TB SSD-om, dizajniran je za gejmere koji traže ekstremnu snagu, brzinu i prostor za skladištenje. Opremljen je zadivljujućim 16-inčnim ekranom i spreman je za najzahtjevnije naslove i aplikacije.",
     "price": 2199.99,
     "offerPrice": 1999.99,
     "image": [
@@ -298,7 +298,7 @@ export const orderDummyData = [
           "_id": "67a1f4e43f34a77b6dde9144",
           "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
           "name": "Apple AirPods Pro",
-          "description": "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) provide excellent sound, active noise cancellation, and a comfortable fit. The USB-C case ensures quick charging, and they pair seamlessly with Apple devices for an effortless audio experience.",
+          "description": "Apple AirPods Pro (2. generacija) sa MagSafe futrolom (USB-C) nude odličan zvuk, aktivno poništavanje buke i udobno pristajanje. USB-C futrola omogućava brzo punjenje, a slušalice se besprijekorno povezuju s Apple uređajima za bezbrižno audio iskustvo.",
           "price": 499.99,
           "offerPrice": 399.99,
           "image": [
@@ -322,12 +322,12 @@ export const orderDummyData = [
       "fullName": "GreatStack",
       "phoneNumber": "0123456789",
       "pincode": 654321,
-      "area": "Main Road , 123 Street, G Block",
-      "city": "City",
-      "state": "State",
+      "area": "Glavna ulica, 123 Ulica, G blok",
+      "city": "Grad",
+      "state": "Država",
       "__v": 0
     },
-    "status": "Order Placed",
+    "status": "Narudžba kreirana",
     "date": 1738672426822,
     "__v": 0
   },
@@ -340,7 +340,7 @@ export const orderDummyData = [
           "_id": "67a1f52e3f34a77b6dde914a",
           "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
           "name": "Bose QuietComfort 45",
-          "description": "The Bose QuietComfort 45 headphones are engineered for exceptional sound quality and unparalleled noise cancellation. With a 24-hour battery life and comfortable, lightweight design, these headphones deliver premium audio for any environment. Whether on a flight, in the office, or at home, the Bose QC45 blocks out distractions, offering an immersive listening experience.",
+          "description": "Slušalice Bose QuietComfort 45 projektovane su za izuzetan kvalitet zvuka i neuporedivo poništavanje buke. Uz 24 sata trajanja baterije i udoban, lagan dizajn, ove slušalice pružaju vrhunski zvuk u svakom okruženju. Bilo da ste u avionu, kancelariji ili kod kuće, Bose QC45 uklanja ometanja i pruža imerzivno iskustvo slušanja.",
           "price": 429.99,
           "offerPrice": 329.99,
           "image": [
@@ -361,12 +361,12 @@ export const orderDummyData = [
       "fullName": "GreatStack",
       "phoneNumber": "0123456789",
       "pincode": 654321,
-      "area": "Main Road , 123 Street, G Block",
-      "city": "City",
-      "state": "State",
+      "area": "Glavna ulica, 123 Ulica, G blok",
+      "city": "Grad",
+      "state": "Država",
       "__v": 0
     },
-    "status": "Order Placed",
+    "status": "Narudžba kreirana",
     "date": 1738672448031,
     "__v": 0
   },
@@ -379,7 +379,7 @@ export const orderDummyData = [
           "_id": "67a1f4e43f34a77b6dde9144",
           "userId": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
           "name": "Apple AirPods Pro",
-          "description": "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C) provide excellent sound, active noise cancellation, and a comfortable fit. The USB-C case ensures quick charging, and they pair seamlessly with Apple devices for an effortless audio experience.",
+          "description": "Apple AirPods Pro (2. generacija) sa MagSafe futrolom (USB-C) nude odličan zvuk, aktivno poništavanje buke i udobno pristajanje. USB-C futrola omogućava brzo punjenje, a slušalice se besprijekorno povezuju s Apple uređajima za bezbrižno audio iskustvo.",
           "price": 499.99,
           "offerPrice": 399.99,
           "image": [
@@ -403,12 +403,12 @@ export const orderDummyData = [
       "fullName": "GreatStack",
       "phoneNumber": "0123456789",
       "pincode": 654321,
-      "area": "Main Road , 123 Street, G Block",
-      "city": "City",
-      "state": "State",
+      "area": "Glavna ulica, 123 Ulica, G blok",
+      "city": "Grad",
+      "state": "Država",
       "__v": 0
     },
-    "status": "Order Placed",
+    "status": "Narudžba kreirana",
     "date": 1738672560698,
     "__v": 0
   }
@@ -421,9 +421,9 @@ export const addressDummyData = [
     "fullName": "GreatStack",
     "phoneNumber": "0123456789",
     "pincode": 654321,
-    "area": "Main Road , 123 Street, G Block",
-    "city": "City",
-    "state": "State",
+    "area": "Glavna ulica, 123 Ulica, G blok",
+    "city": "Grad",
+    "state": "Država",
     "__v": 0
   }
 ]
