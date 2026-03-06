@@ -4,30 +4,30 @@ import Image from "next/image";
 
 const HeaderSlider = () => {
   const sliderData = [
-      {
-        id: 1,
-        title: "Doživite čist zvuk — vaše savršene slušalice vas čekaju!",
-        offer: "Ograničena ponuda: 30% popusta",
-        buttonText1: "Kupi sada",
-        buttonText2: "Saznaj više",
-        imgSrc: assets.header_headphone_image,
-      },
-      {
-        id: 2,
-        title: "Gejming novog nivoa počinje ovdje — otkrijte PlayStation 5 već danas!",
-        offer: "Požurite, ostalo je samo nekoliko!",
-        buttonText1: "Kupi sada",
-        buttonText2: "Istraži ponude",
-        imgSrc: assets.header_playstation_image,
-      },
-      {
-        id: 3,
-        title: "Snaga susreće eleganciju — Apple MacBook Pro je tu za vas!",
-        offer: "Ekskluzivna ponuda: 40% popusta",
-        buttonText1: "Naruči sada",
-        buttonText2: "Saznaj više",
-        imgSrc: assets.header_macbook_image,
-      },
+    {
+      id: 1,
+      title: "Prirodni melem za lice i tijelo — nježna njega svaki dan!",
+      offer: "Ručno rađeno • blaga njega kože",
+      buttonText1: "Kupi sada",
+      buttonText2: "Saznaj više",
+      imgSrc: assets.header_slider_first,
+    },
+    {
+      id: 2,
+      title: "Prirodna noćna krema za regeneraciju kože tokom sna",
+      offer: "Prirodni sastojci • dubinska hidratacija",
+      buttonText1: "Kupi sada",
+      buttonText2: "Saznaj više",
+      imgSrc: assets.header_slider_second,
+    },
+    {
+      id: 3,
+      title: "Prirodna pjena za nježno čišćenje lica svaki dan",
+      offer: "Blaga formula • svježa i čista koža",
+      buttonText1: "Kupi sada",
+      buttonText2: "Saznaj više",
+      imgSrc: assets.header_slider_third,
+    },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -67,7 +67,11 @@ const HeaderSlider = () => {
                 </button>
                 <button className="group flex items-center gap-2 px-6 py-2.5 font-medium">
                   {slide.buttonText2}
-                  <Image className="group-hover:translate-x-1 transition" src={assets.arrow_icon} alt="arrow_icon" />
+                  <Image
+                    className="group-hover:translate-x-1 transition"
+                    src={assets.arrow_icon}
+                    alt="arrow_icon"
+                  />
                 </button>
               </div>
             </div>
