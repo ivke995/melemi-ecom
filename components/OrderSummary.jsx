@@ -172,8 +172,7 @@ const OrderSummary = () => {
           <div className="flex justify-between text-base font-medium">
             <p className="uppercase text-gray-600">Stavke {getCartCount()}</p>
             <p className="text-gray-800">
-              {currency}
-              {getCartAmount()}
+              {getCartAmount()} {currency}
             </p>
           </div>
           <div className="flex justify-between">
@@ -183,15 +182,13 @@ const OrderSummary = () => {
           <div className="flex justify-between">
             <p className="text-gray-600">Porez (2%)</p>
             <p className="font-medium text-gray-800">
-              {currency}
-              {Math.floor(getCartAmount() * 0.02)}
+              {Math.floor(getCartAmount() * 0.02)} {currency}
             </p>
           </div>
           <div className="flex justify-between text-lg md:text-xl font-medium border-t pt-3">
             <p>Ukupno</p>
             <p>
-              {currency}
-              {getCartAmount() + Math.floor(getCartAmount() * 0.02)}
+              {getCartAmount() + Math.floor(getCartAmount() * 0.02)} {currency}
             </p>
           </div>
         </div>

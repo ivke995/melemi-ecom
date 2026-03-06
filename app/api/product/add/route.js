@@ -26,6 +26,10 @@ export async function POST(request) {
     const category = formData.get("category");
     const price = formData.get("price");
     const offerPrice = formData.get("offerPrice");
+    const showDiscountValue = formData.get("showDiscount");
+    const showDiscount =
+      showDiscountValue === null ? true : showDiscountValue === "true";
+    const resolvedOfferPrice = showDiscount ? offerPrice : price;
 
     const files = formData.getAll("images");
     if (!files || files.length === 0) {
@@ -64,7 +68,8 @@ export async function POST(request) {
       description,
       category,
       price: Number(price),
-      offerPrice: Number(offerPrice),
+      offerPrice: Number(resolvedOfferPrice),
+      showDiscount,
       image,
       date: Date.now(),
     });

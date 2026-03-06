@@ -63,7 +63,8 @@ const MyOrders = () => {
                       <span className="font-medium text-base">
                         {order.items
                           .map(
-                            (item) => item.product.name + ` x ${item.quantity}`,
+                            (item) =>
+                              `${item.product?.name ?? "Proizvod nije dostupan"} x ${item.quantity}`,
                           )
                           .join(", ")}
                       </span>
@@ -84,8 +85,7 @@ const MyOrders = () => {
                     </p>
                   </div>
                   <p className="font-medium my-auto">
-                    {currency}
-                    {order.amount}
+                    {order.amount} {currency}
                   </p>
                   <div>
                     <p className="flex flex-col">

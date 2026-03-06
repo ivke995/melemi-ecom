@@ -9,6 +9,9 @@ const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
 export const metadata = {
   title: "Bojana Melemi",
   description: "Bojana Melemi veb-sajt je mjesto gdje ćete pronaći sve za njegu tijela.",
+  icons: {
+    icon: "/melem-favicon-32.png",
+  },
 };
 
 export default function RootLayout({ children }) {
