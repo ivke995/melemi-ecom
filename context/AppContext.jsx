@@ -12,7 +12,7 @@ export const useAppContext = () => {
 };
 
 export const AppContextProvider = (props) => {
-  const currency = process.env.NEXT_PUBLIC_CURRENCY;
+  const currency = (process.env.NEXT_PUBLIC_CURRENCY || "KM").trim();
   const router = useRouter();
   const { user } = useUser();
 
@@ -115,12 +115,20 @@ export const AppContextProvider = (props) => {
     return totalCount;
   };
 
+  const getProductPrice = (product) => {
+    if (!product) return 0;
+    if (product.showDiscount === false) {
+      return product.price ?? product.offerPrice ?? 0;
+    }
+    return product.offerPrice ?? product.price ?? 0;
+  };
+
   const getCartAmount = () => {
     let totalAmount = 0;
     for (const items in cartItems) {
       let itemInfo = products.find((product) => product._id === items);
-      if (cartItems[items] > 0) {
-        totalAmount += itemInfo.offerPrice * cartItems[items];
+      if (cartItems[items] > 0 && itemInfo) {
+        totalAmount += getProductPrice(itemInfo) * cartItems[items];
       }
     }
     return Math.floor(totalAmount * 100) / 100;
@@ -152,6 +160,7 @@ export const AppContextProvider = (props) => {
     addToCart,
     updateCartQuantity,
     getCartCount,
+    getProductPrice,
     getCartAmount,
   };
 

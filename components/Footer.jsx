@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="py-4 text-center text-xs md:text-sm">
-        Copyright 2026 © GreatStack.dev Sva prava zadržana.
+        Copyright 2026 © Bojana Melemi Sva prava zadržana.
       </p>
     </footer>
   );

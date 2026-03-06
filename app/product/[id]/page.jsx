@@ -24,7 +24,7 @@ const Product = () => {
 
     const { id } = useParams();
 
-    const { products, router, addToCart } = useAppContext()
+    const { products, router, addToCart, currency } = useAppContext()
 
     const [mainImage, setMainImage] = useState(null);
     const [productData, setProductData] = useState(null);
@@ -37,6 +37,9 @@ const Product = () => {
     useEffect(() => {
         fetchProductData();
     }, [id, products.length])
+
+    const showDiscount = productData?.showDiscount !== false
+    const displayPrice = showDiscount ? productData?.offerPrice : productData?.price
 
     return productData ? (<>
         <Navbar />
@@ -95,10 +98,12 @@ const Product = () => {
                         {productData.description}
                     </p>
                     <p className="text-3xl font-medium mt-6">
-                        ${productData.offerPrice}
-                        <span className="text-base font-normal text-gray-800/60 line-through ml-2">
-                            ${productData.price}
-                        </span>
+                        {displayPrice} {currency}
+                        {showDiscount && (
+                            <span className="text-base font-normal text-gray-800/60 line-through ml-2">
+                                {productData.price} {currency}
+                            </span>
+                        )}
                     </p>
                     <hr className="bg-gray-600 my-6" />
                     <div className="overflow-x-auto">

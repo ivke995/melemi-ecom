@@ -19,7 +19,7 @@ const categoryLabels = {
 };
 
 const ProductList = () => {
-  const { router, getToken, user } = useAppContext();
+  const { router, getToken, user, currency, getProductPrice } = useAppContext();
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -88,19 +88,36 @@ const ProductList = () => {
                     <td className="px-4 py-3 max-sm:hidden">
                       {categoryLabels[product.category] || product.category}
                     </td>
-                    <td className="px-4 py-3">${product.offerPrice}</td>
+                    <td className="px-4 py-3">
+                      {getProductPrice(product)} {currency}
+                      {product.showDiscount !== false && (
+                        <span className="text-xs text-gray-400 line-through ml-2">
+                          {product.price} {currency}
+                        </span>
+                      )}
+                    </td>
                     <td className="px-4 py-3 max-sm:hidden">
-                      <button
-                        onClick={() => router.push(`/product/${product._id}`)}
-                        className="flex items-center gap-1 px-1.5 md:px-3.5 py-2 bg-orange-600 text-white rounded-md"
-                      >
-                        <span className="hidden md:block">Posjeti</span>
-                        <Image
-                          className="h-3.5"
-                          src={assets.redirect_icon}
-                          alt="redirect_icon"
-                        />
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => router.push(`/product/${product._id}`)}
+                          className="flex items-center gap-1 px-1.5 md:px-3.5 py-2 bg-orange-600 text-white rounded-md"
+                        >
+                          <span className="hidden md:block">Posjeti</span>
+                          <Image
+                            className="h-3.5"
+                            src={assets.redirect_icon}
+                            alt="redirect_icon"
+                          />
+                        </button>
+                        <button
+                          onClick={() =>
+                            router.push(`/seller/edit-product/${product._id}`)
+                          }
+                          className="px-2.5 md:px-3.5 py-2 border border-gray-300 text-gray-600 rounded-md hover:bg-gray-50"
+                        >
+                          Uredi
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

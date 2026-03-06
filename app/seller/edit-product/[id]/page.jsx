@@ -1,26 +1,63 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useParams } from "next/navigation";
+import Loading from "@/components/Loading";
 
-const AddProduct = () => {
-  const { getToken } = useAppContext();
+const EditProduct = () => {
+  const { getToken, products, router } = useAppContext();
+  const { id } = useParams();
 
-  const [files, setFiles] = useState([]);
+  const [productData, setProductData] = useState(null);
+  const [imageSlots, setImageSlots] = useState(Array(4).fill(null));
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("Earphone");
   const [price, setPrice] = useState("");
   const [offerPrice, setOfferPrice] = useState("");
   const [showDiscount, setShowDiscount] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!id || products.length === 0) return;
+    const product = products.find((item) => item._id === id);
+    if (!product) {
+      setLoading(false);
+      toast.error("Proizvod nije pronađen");
+      return;
+    }
+
+    setProductData(product);
+    setName(product.name || "");
+    setDescription(product.description || "");
+    setCategory(product.category || "Earphone");
+    setPrice(product.price ?? "");
+    setOfferPrice(product.offerPrice ?? "");
+    setShowDiscount(product.showDiscount !== false);
+    const slots = Array.from({ length: 4 }, (_, index) => {
+      return product.image?.[index] || null;
+    });
+    setImageSlots(slots);
+    setLoading(false);
+  }, [id, products.length, products]);
+
+  const handleImageChange = (index, file) => {
+    const updatedSlots = [...imageSlots];
+    updatedSlots[index] = file;
+    setImageSlots(updatedSlots);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!productData) return;
+
     const formData = new FormData();
+    formData.append("productId", productData._id);
     formData.append("name", name);
     formData.append("description", description);
     formData.append("category", category);
@@ -29,24 +66,28 @@ const AddProduct = () => {
     formData.append("offerPrice", resolvedOfferPrice);
     formData.append("showDiscount", showDiscount);
 
-    for (let i = 0; i < files.length; i++) {
-      formData.append("images", files[i]);
-    }
+    const existingImages = imageSlots.map((slot, index) => {
+      if (typeof slot === "string") return slot;
+      return productData.image?.[index] || "";
+    });
+    formData.append("existingImages", JSON.stringify(existingImages));
+
+    imageSlots.forEach((slot, index) => {
+      if (slot instanceof File) {
+        formData.append("images", slot);
+        formData.append("imageIndexes", index);
+      }
+    });
 
     try {
       const token = await getToken();
-      const { data } = await axios.post("/api/product/add", formData, {
+      const { data } = await axios.post("/api/product/update", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
       if (data.success) {
         toast.success(data.message);
-        setFiles([]);
-        setName("");
-        setDescription("");
-        setCategory("Earphone");
-        setPrice("");
-        setOfferPrice("");
-        setShowDiscount(true);
+        router.push("/seller/product-list");
       } else {
         toast.error(data.message);
       }
@@ -55,38 +96,40 @@ const AddProduct = () => {
     }
   };
 
+  if (loading) return <Loading />;
+
   return (
     <div className="flex-1 min-h-screen flex flex-col justify-between">
       <form onSubmit={handleSubmit} className="md:p-10 p-4 space-y-5 max-w-lg">
         <div>
           <p className="text-base font-medium">Slika proizvoda</p>
           <div className="flex flex-wrap items-center gap-3 mt-2">
-            {[...Array(4)].map((_, index) => (
-              <label key={index} htmlFor={`image${index}`}>
-                <input
-                  onChange={(e) => {
-                    const updatedFiles = [...files];
-                    updatedFiles[index] = e.target.files[0];
-                    setFiles(updatedFiles);
-                  }}
-                  type="file"
-                  id={`image${index}`}
-                  hidden
-                />
-                <Image
-                  key={index}
-                  className="max-w-24 cursor-pointer"
-                  src={
-                    files[index]
-                      ? URL.createObjectURL(files[index])
-                      : assets.upload_area
-                  }
-                  alt=""
-                  width={100}
-                  height={100}
-                />
-              </label>
-            ))}
+            {[...Array(4)].map((_, index) => {
+              const slot = imageSlots[index];
+              const preview = slot
+                ? slot instanceof File
+                  ? URL.createObjectURL(slot)
+                  : slot
+                : assets.upload_area;
+
+              return (
+                <label key={index} htmlFor={`image${index}`}>
+                  <input
+                    onChange={(e) => handleImageChange(index, e.target.files[0])}
+                    type="file"
+                    id={`image${index}`}
+                    hidden
+                  />
+                  <Image
+                    className="max-w-24 cursor-pointer"
+                    src={preview}
+                    alt=""
+                    width={100}
+                    height={100}
+                  />
+                </label>
+              );
+            })}
           </div>
         </div>
         <div className="flex flex-col gap-1 max-w-md">
@@ -104,10 +147,7 @@ const AddProduct = () => {
           />
         </div>
         <div className="flex flex-col gap-1 max-w-md">
-          <label
-            className="text-base font-medium"
-            htmlFor="product-description"
-          >
+          <label className="text-base font-medium" htmlFor="product-description">
             Opis proizvoda
           </label>
           <textarea
@@ -129,7 +169,7 @@ const AddProduct = () => {
               id="category"
               className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
               onChange={(e) => setCategory(e.target.value)}
-              defaultValue={category}
+              value={category}
             >
               <option value="Earphone">Slušalice (in-ear)</option>
               <option value="Headphone">Slušalice (over-ear)</option>
@@ -187,7 +227,7 @@ const AddProduct = () => {
           type="submit"
           className="px-8 py-2.5 bg-orange-600 text-white font-medium rounded"
         >
-          DODAJ
+          SAČUVAJ
         </button>
       </form>
       {/* <Footer /> */}
@@ -195,4 +235,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default EditProduct;

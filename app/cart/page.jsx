@@ -8,7 +8,16 @@ import { useAppContext } from "@/context/AppContext";
 
 const Cart = () => {
 
-  const { products, router, cartItems, addToCart, updateCartQuantity, getCartCount } = useAppContext();
+  const {
+    products,
+    router,
+    cartItems,
+    addToCart,
+    updateCartQuantity,
+    getCartCount,
+    currency,
+    getProductPrice,
+  } = useAppContext();
 
   return (
     <>
@@ -42,6 +51,7 @@ const Cart = () => {
               <tbody>
                 {Object.keys(cartItems || {}).map((itemId) => {
                   const product = products.find(product => product._id === itemId);
+                  const itemPrice = getProductPrice(product);
 
                   if (!product || cartItems[itemId] <= 0) return null;
 
@@ -75,7 +85,7 @@ const Cart = () => {
                           </button>
                         </div>
                       </td>
-                      <td className="py-4 md:px-4 px-1 text-gray-600">${product.offerPrice}</td>
+                      <td className="py-4 md:px-4 px-1 text-gray-600">{itemPrice} {currency}</td>
                       <td className="py-4 md:px-4 px-1">
                         <div className="flex items-center md:gap-2 gap-1">
                           <button onClick={() => updateCartQuantity(product._id, cartItems[itemId] - 1)}>
@@ -95,7 +105,7 @@ const Cart = () => {
                           </button>
                         </div>
                       </td>
-                      <td className="py-4 md:px-4 px-1 text-gray-600">${(product.offerPrice * cartItems[itemId]).toFixed(2)}</td>
+                      <td className="py-4 md:px-4 px-1 text-gray-600">{(itemPrice * cartItems[itemId]).toFixed(2)} {currency}</td>
                     </tr>
                   );
                 })}
