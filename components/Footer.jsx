@@ -42,8 +42,18 @@ const Footer = () => {
             <h2 className="font-medium text-gray-900 mb-5">Kontaktirajte nas</h2>
             <div className="text-sm">
               <div className="space-y-2">
-                <p>{contactPhone}</p>
-                <p>bojanamelemi@gmail.com</p>
+                <a
+                  className="block hover:text-gray-900 transition"
+                  href={`tel:${contactPhone}`}
+                >
+                  {contactPhone}
+                </a>
+                <a
+                  className="block hover:text-gray-900 transition"
+                  href="mailto:bojanamelemi@gmail.com"
+                >
+                  bojanamelemi@gmail.com
+                </a>
               </div>
               <div className="flex items-center gap-3 mt-4 text-gray-500">
                 {socialLinks.map(({ label, href, Icon }) => (
