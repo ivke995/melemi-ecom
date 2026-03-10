@@ -13,9 +13,9 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const navLinks = [
     { label: "Početna", href: "/" },
-    { label: "Prodavnica", href: "/all-products" },
-    { label: "O nama", href: "/" },
-    { label: "Kontakt", href: "/" },
+    { label: "Prodavnica", href: "/prodavnica" },
+    { label: "O nama", href: "/o-nama" },
+    { label: "Kontakt", href: "/kontakt" },
   ];
 
   return (
@@ -113,7 +113,7 @@ const Navbar = () => {
               <UserButton.Action
                 label="Proizvodi"
                 labelIcon={<BoxIcon />}
-                onClick={() => router.push("/all-product")}
+                onClick={() => router.push("/prodavnica")}
               />
             </UserButton.MenuItems>
             <UserButton.MenuItems>
