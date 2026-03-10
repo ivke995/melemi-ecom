@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
-import { assets, BagIcon, BoxIcon, CartIcon, HomeIcon } from "@/assets/assets";
 import Link from "next/link";
-import { useAppContext } from "@/context/AppContext";
 import Image from "next/image";
 import { useClerk, UserButton } from "@clerk/nextjs";
+import { assets, BagIcon, BoxIcon, CartIcon, HomeIcon } from "@/assets/assets";
+import { useAppContext } from "@/context/AppContext";
+import { socialLinks } from "@/components/contactLinks";
 
 const Navbar = () => {
   const { isSeller, router, user } = useAppContext();
@@ -47,6 +48,20 @@ const Navbar = () => {
       </div>
 
       <ul className="hidden md:flex items-center gap-4 ">
+        <div className="flex items-center gap-3">
+          {socialLinks.map(({ label, href, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              aria-label={label}
+              className="text-gray-500 hover:text-gray-900 transition"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon className="w-4 h-4" />
+            </a>
+          ))}
+        </div>
         <Image className="w-4 h-4" src={assets.search_icon} alt="search icon" />
         {user ? (
           <UserButton>
@@ -153,6 +168,20 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          <div className="flex items-center gap-3 pt-2">
+            {socialLinks.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="text-gray-500 hover:text-gray-900 transition"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </nav>

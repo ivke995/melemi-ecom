@@ -1,6 +1,7 @@
 import React from "react";
-import { assets } from "@/assets/assets";
 import Image from "next/image";
+import { assets } from "@/assets/assets";
+import { contactPhone, socialLinks } from "@/components/contactLinks";
 
 const Footer = () => {
   return (
@@ -39,9 +40,25 @@ const Footer = () => {
         <div className="w-1/2 flex items-start justify-start md:justify-center">
           <div>
             <h2 className="font-medium text-gray-900 mb-5">Kontaktirajte nas</h2>
-            <div className="text-sm space-y-2">
-              <p>+1-234-567-890</p>
-              <p>contact@greatstack.dev</p>
+            <div className="text-sm">
+              <div className="space-y-2">
+                <p>{contactPhone}</p>
+                <p>contact@greatstack.dev</p>
+              </div>
+              <div className="flex items-center gap-3 mt-4 text-gray-500">
+                {socialLinks.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    className="hover:text-gray-900 transition"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
