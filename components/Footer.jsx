@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 import { contactPhone, socialLinks } from "@/components/contactLinks";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -22,16 +23,16 @@ const Footer = () => {
             <h2 className="font-medium text-gray-900 mb-5">Kompanija</h2>
             <ul className="text-sm space-y-2">
               <li>
-                <a className="hover:underline transition" href="#">Početna</a>
+                <Link className="hover:underline transition" href="/">Početna</Link>
               </li>
               <li>
-                <a className="hover:underline transition" href="#">O nama</a>
+                <Link className="hover:underline transition" href="/o-nama">O nama</Link>
               </li>
               <li>
-                <a className="hover:underline transition" href="#">Kontakt</a>
+                <Link className="hover:underline transition" href="/kontakt">Kontakt</Link>
               </li>
               <li>
-                <a className="hover:underline transition" href="#">Politika privatnosti</a>
+                <Link className="hover:underline transition" href="#">Politika privatnosti</Link>
               </li>
             </ul>
           </div>
