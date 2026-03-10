@@ -43,7 +43,7 @@ const Footer = () => {
             <div className="text-sm">
               <div className="space-y-2">
                 <p>{contactPhone}</p>
-                <p>contact@greatstack.dev</p>
+                <p>bojanamelemi@gmail.com</p>
               </div>
               <div className="flex items-center gap-3 mt-4 text-gray-500">
                 {socialLinks.map(({ label, href, Icon }) => (
