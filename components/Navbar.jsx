@@ -9,9 +9,16 @@ import { useClerk, UserButton } from "@clerk/nextjs";
 const Navbar = () => {
   const { isSeller, router, user } = useAppContext();
   const { openSignIn } = useClerk();
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const navLinks = [
+    { label: "Početna", href: "/" },
+    { label: "Prodavnica", href: "/all-products" },
+    { label: "O nama", href: "/" },
+    { label: "Kontakt", href: "/" },
+  ];
 
   return (
-    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700">
+    <nav className="relative flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700">
       <Image
         className="cursor-pointer w-28 md:w-32"
         onClick={() => router.push("/")}
@@ -19,18 +26,15 @@ const Navbar = () => {
         alt="logo"
       />
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
-        <Link href="/" className="hover:text-gray-900 transition">
-          Početna
-        </Link>
-        <Link href="/all-products" className="hover:text-gray-900 transition">
-          Prodavnica
-        </Link>
-        <Link href="/" className="hover:text-gray-900 transition">
-          O nama
-        </Link>
-        <Link href="/" className="hover:text-gray-900 transition">
-          Kontakt
-        </Link>
+        {navLinks.map((link) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            className="hover:text-gray-900 transition"
+          >
+            {link.label}
+          </Link>
+        ))}
 
         {isSeller && (
           <button
@@ -121,6 +125,35 @@ const Navbar = () => {
               Nalog
             </button>
         )}
+        <button
+          type="button"
+          aria-controls="mobile-nav"
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          className="p-2 border border-gray-300 rounded-md"
+        >
+          <Image className="w-5 h-5" src={assets.menu_icon} alt="menu icon" />
+        </button>
+      </div>
+      <div
+        id="mobile-nav"
+        aria-hidden={!isMenuOpen}
+        className={`md:hidden absolute left-0 right-0 top-full bg-white border-b border-gray-200 shadow-sm transition-all duration-200 z-20 ${
+          isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col gap-3 px-6 py-4 text-sm text-gray-700">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-gray-900 transition"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );
