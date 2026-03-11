@@ -7,8 +7,8 @@ const NewsLetter = () => {
         Pretplatite se sada i ostvarite 20% popusta
       </h1>
       <p className="md:text-base text-gray-500/80 pb-8">
-        Lorem Ipsum je jednostavan probni tekst štamparske i slovoslagačke
-        industrije.
+        Prijavite se da prvi saznate o novim melemima, setovima i sezonskim
+        akcijama. Bez spama, samo korisne novosti.
       </p>
       <div className="flex items-center justify-between max-w-2xl w-full md:h-14 h-12">
         <input

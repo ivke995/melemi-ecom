@@ -11,10 +11,10 @@ const Footer = () => {
         <div className="w-4/5">
           <Image className="w-28 md:w-32" src={assets.logo} alt="logo" />
           <p className="mt-6 text-sm">
-            Lorem Ipsum je jednostavan probni tekst štamparske i slovoslagačke
-            industrije. Lorem Ipsum je standardni probni tekst u industriji još
-            od 1500-ih, kada je nepoznati štampar uzeo slagalicu slova i
-            izmiješao je kako bi napravio knjigu uzorka slova.
+            Bojana Melemi je mala radionica prirodne njege kože. Ručno pravimo
+            meleme i balzame u malim serijama, birajući provjerene sastojke i
+            jasne formule. Fokusirani smo na kvalitet, sigurnost i jednostavnu
+            svakodnevnu rutinu.
           </p>
         </div>
 
