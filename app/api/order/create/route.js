@@ -1,17 +1,50 @@
 import connectDB from "@/config/db";
 import { inngest } from "@/config/inngest";
+import Address from "@/models/Address";
 import Product from "@/models/Product";
 import User from "@/models/User";
 import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+import { randomUUID } from "crypto";
 
 export async function POST(request) {
   try {
     const { userId } = getAuth(request);
     await connectDB();
     const { address, items } = await request.json();
-    if (!address || items.length === 0) {
+    if (!Array.isArray(items) || items.length === 0) {
       return NextResponse.json({ success: false, message: "Neispravni podaci" });
+    }
+
+    let orderUserId = userId;
+    let orderAddressId = address;
+
+    if (!userId) {
+      const { fullName, phoneNumber, pincode, area, city, state } =
+        address || {};
+      if (!fullName || !phoneNumber || !pincode || !area || !city || !state) {
+        return NextResponse.json({
+          success: false,
+          message: "Nedostaju podaci za dostavu",
+        });
+      }
+      const guestId = `guest-${randomUUID()}`;
+      const guestAddress = await Address.create({
+        fullName,
+        phoneNumber,
+        pincode,
+        area,
+        city,
+        state,
+        userId: guestId,
+      });
+      orderUserId = guestId;
+      orderAddressId = guestAddress._id;
+    } else if (!address || typeof address !== "string") {
+      return NextResponse.json({
+        success: false,
+        message: "Molimo izaberite adresu",
+      });
     }
     // calculate amount using items
     const amount = await items.reduce(async (accPromise, item) => {
@@ -26,8 +59,8 @@ export async function POST(request) {
     await inngest.send({
       name: "order/created",
       data: {
-        userId,
-        address,
+        userId: orderUserId,
+        address: orderAddressId,
         items,
         amount: amount + Math.floor(amount * 0.02),
         date: Date.now(),
@@ -35,9 +68,13 @@ export async function POST(request) {
     });
 
     // clear user cart
-    const user = await User.findById(userId);
-    user.cartItems = {};
-    await user.save();
+    if (userId) {
+      const user = await User.findById(userId);
+      if (user) {
+        user.cartItems = {};
+        await user.save();
+      }
+    }
 
     return NextResponse.json({ success: true, message: "Narudžba je kreirana" });
   } catch (error) {

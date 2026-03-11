@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useClerk, UserButton } from "@clerk/nextjs";
 import { assets, BagIcon, BoxIcon, CartIcon, HomeIcon } from "@/assets/assets";
-import { useAppContext } from "@/context/AppContext";
 import { socialLinks } from "@/components/contactLinks";
+import { useAppContext } from "@/context/AppContext";
+import { useClerk, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const Navbar = () => {
-  const { isSeller, router, user } = useAppContext();
+  const { isSeller, router, user, getCartCount } = useAppContext();
   const { openSignIn } = useClerk();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const navLinks = [
@@ -58,11 +58,24 @@ const Navbar = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="w-5 h-5" />
             </a>
           ))}
         </div>
-        <Image className="w-4 h-4" src={assets.search_icon} alt="search icon" />
+        <button
+          onClick={() => router.push("/cart")}
+          aria-label="Korpa"
+          className="relative flex items-center justify-center"
+        >
+          <span className="scale-110">
+            <CartIcon />
+          </span>
+          {getCartCount() > 0 && (
+            <span className="absolute -right-2 -top-2 min-w-4 h-4 px-1 rounded-full bg-orange-600 text-white text-[10px] flex items-center justify-center">
+              {getCartCount()}
+            </span>
+          )}
+        </button>
         {user ? (
           <UserButton>
             <UserButton.MenuItems>
@@ -81,13 +94,13 @@ const Navbar = () => {
             </UserButton.MenuItems>
           </UserButton>
         ) : (
-            <button
-              onClick={openSignIn}
-              className="flex items-center gap-2 hover:text-gray-900 transition"
-            >
-              <Image src={assets.user_icon} alt="user icon" />
-              Nalog
-            </button>
+          <button
+            onClick={openSignIn}
+            className="flex items-center gap-2 hover:text-gray-900 transition"
+          >
+            <Image className="w-5 h-5" src={assets.user_icon} alt="user icon" />
+            Nalog
+          </button>
         )}
       </ul>
 
@@ -100,6 +113,20 @@ const Navbar = () => {
             Panel prodavca
           </button>
         )}
+        <button
+          onClick={() => router.push("/cart")}
+          aria-label="Korpa"
+          className="relative flex items-center justify-center"
+        >
+          <span className="scale-110">
+            <CartIcon />
+          </span>
+          {getCartCount() > 0 && (
+            <span className="absolute -right-2 -top-2 min-w-4 h-4 px-1 rounded-full bg-orange-600 text-white text-[10px] flex items-center justify-center">
+              {getCartCount()}
+            </span>
+          )}
+        </button>
         {user ? (
           <UserButton>
             <UserButton.MenuItems>
@@ -132,13 +159,13 @@ const Navbar = () => {
             </UserButton.MenuItems>
           </UserButton>
         ) : (
-            <button
-              onClick={openSignIn}
-              className="flex items-center gap-2 hover:text-gray-900 transition"
-            >
-              <Image src={assets.user_icon} alt="user icon" />
-              Nalog
-            </button>
+          <button
+            onClick={openSignIn}
+            className="flex items-center gap-2 hover:text-gray-900 transition"
+          >
+            <Image className="w-5 h-5" src={assets.user_icon} alt="user icon" />
+            Nalog
+          </button>
         )}
         <button
           type="button"
@@ -154,7 +181,9 @@ const Navbar = () => {
         id="mobile-nav"
         aria-hidden={!isMenuOpen}
         className={`md:hidden absolute left-0 right-0 top-full bg-white border-b border-gray-200 shadow-sm transition-all duration-200 z-20 ${
-          isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+          isMenuOpen
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
         <div className="flex flex-col gap-3 px-6 py-4 text-sm text-gray-700">
@@ -178,7 +207,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Icon className="w-4 h-4" />
+                <Icon className="w-5 h-5" />
               </a>
             ))}
           </div>

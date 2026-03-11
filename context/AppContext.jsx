@@ -23,6 +23,7 @@ export const AppContextProvider = (props) => {
   const [userData, setUserData] = useState(false);
   const [isSeller, setIsSeller] = useState(false);
   const [cartItems, setCartItems] = useState({});
+  const guestCartKey = "guest-cart";
 
   const fetchProductData = async () => {
     setProductsLoading(true);
@@ -137,6 +138,33 @@ export const AppContextProvider = (props) => {
     }
     return Math.floor(totalAmount * 100) / 100;
   };
+
+  useEffect(() => {
+    if (user) return;
+    if (typeof window === "undefined") return;
+    const storedCart = window.localStorage.getItem(guestCartKey);
+    if (!storedCart) return;
+    try {
+      const parsedCart = JSON.parse(storedCart);
+      if (parsedCart && typeof parsedCart === "object") {
+        setCartItems(parsedCart);
+      }
+    } catch {
+      window.localStorage.removeItem(guestCartKey);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (user) {
+      window.localStorage.removeItem(guestCartKey);
+      return;
+    }
+    window.localStorage.setItem(
+      guestCartKey,
+      JSON.stringify(cartItems || {}),
+    );
+  }, [cartItems, user]);
 
   useEffect(() => {
     fetchProductData();
