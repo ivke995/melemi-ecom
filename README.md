@@ -1,69 +1,86 @@
-# QuickCart - A simple eCommerce website
+# Bojana Melemi — eCommerce Storefront
 
-QuickCart is an open-source **Next.js eCommerce frontend** project.  
-It provides a modern, fast and customizable shopping UI.  
-This repo is **frontend only** – contributors can improve the design, add new pages, animations and more.
-
----
+Bojana Melemi is a full-stack Next.js (App Router) ecommerce app with Clerk auth, MongoDB (Mongoose), Cloudinary image uploads, and background jobs via Inngest. The UI is localized in Serbian/Croatian, with storefront routes like `/prodavnica`, `/o-nama`, and `/kontakt`.
 
 ## Features
 
--   Built with **Next.js + Tailwind CSS**
--   Responsive design
--   Reusable components
--   Customizable layouts and colors
--   Open for contributions (UI/UX, animations, themes, layouts etc.)
+- Product catalog, product detail pages, cart, and checkout flow
+- Customer order history and address management
+- Seller dashboard for product management and order handling
+- Clerk authentication with protected API routes
+- Cloudinary-based product image uploads
+- Inngest functions for user sync and batched order creation
+- Tailwind CSS UI with reusable components
 
----
+## Tech Stack
+
+- Next.js 15 (React 19, App Router)
+- Tailwind CSS
+- MongoDB + Mongoose
+- Clerk Auth
+- Cloudinary
+- Inngest
 
 ## Getting Started
 
-1. Clone the repo
+### 1) Clone the repo
 
-    ```bash
-    git clone https://github.com/GreatStackDev/QuickCart.git
-    cd QuickCart
-    ```
+```bash
+git clone https://github.com/ivke995/melemi-ecom.git
+cd melemi-ecom
+```
 
-2. Install dependencies
+### 2) Install dependencies
 
-    ```bash
-    npm install
-    ```
+```bash
+npm install
+```
 
-3. Run locally
+### 3) Environment variables
 
-    ```bash
-    npm run dev
-    ```
+Create a `.env` file in the project root:
 
----
+```bash
+MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_CURRENCY=KM
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+```
 
-## Contributing
+Notes:
+- `MONGODB_URI` should be the base connection string (the app uses `/quickcart`).
+- `NEXT_PUBLIC_CURRENCY` is used as a suffix label in prices.
+https://github.com/ivke995/melemi-ecom.git
+### 4) Run locally
 
-We welcome all kinds of contributions! You can:
+```bash
+npm run dev
+```
 
-- Create new pages
-- Improve layouts
-- Add animations and transitions
-- Enhance responsiveness
-- Refactor components
-- Suggest new UI/UX ideas
-- Add themes or color variations
-- Introduce accessibility improvements
-- Add filtering/search features
-- Improve documentation
+## Scripts
 
-Check out [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+- `npm run dev` — start Next.js dev server
+- `npm run dev:turbopack` — start Turbopack dev server
+- `npm run build` — create production build
+- `npm run start` — run production server
+- `npm run lint` — run Next.js ESLint
 
----
+## Project Structure
+
+- `app/` — App Router pages and API routes
+- `components/` — shared UI components
+- `context/AppContext.jsx` — global client state
+- `models/` — Mongoose models
+- `config/` — DB connection and Inngest config
+- `assets/` — icons and dummy data
+
+## Tests
+
+No automated test runner is configured yet.
 
 ## License
 
-This project is licensed under the **MIT License**.
-
----
-
-## 🌟 Contributors
-
-Thanks to everyone who contributes to **QuickCart**!
+MIT — see `LICENSE.md`.
