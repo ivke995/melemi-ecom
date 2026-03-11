@@ -19,11 +19,13 @@ export const AppContextProvider = (props) => {
   const { getToken } = useAuth();
 
   const [products, setProducts] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(true);
   const [userData, setUserData] = useState(false);
   const [isSeller, setIsSeller] = useState(false);
   const [cartItems, setCartItems] = useState({});
 
   const fetchProductData = async () => {
+    setProductsLoading(true);
     try {
       const { data } = await axios.get("/api/product/list");
       if (data.success) {
@@ -33,6 +35,8 @@ export const AppContextProvider = (props) => {
       }
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setProductsLoading(false);
     }
   };
 
@@ -154,6 +158,7 @@ export const AppContextProvider = (props) => {
     userData,
     fetchUserData,
     products,
+    productsLoading,
     fetchProductData,
     cartItems,
     setCartItems,
