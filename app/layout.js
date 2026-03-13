@@ -3,12 +3,13 @@ import "./globals.css";
 import { AppContextProvider } from "@/context/AppContext";
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Analytics } from "@vercel/analytics/react";
 
 const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export const metadata = {
-  title: "Bojana Melemi",
-  description: "Bojana Melemi veb-sajt je mjesto gdje ćete pronaći sve za njegu tijela.",
+  title: "Bojana Melemi | Prirodna njega tijela",
+  description: "Bojana Melemi veb-sajt je mjesto gdje ćete pronaći prirodne meleme i njegu tijela.",
   icons: {
     icon: "/melem-favicon-32.png",
   },
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
         <body className={`${outfit.className} antialiased text-gray-700`}>
           <Toaster />
           <AppContextProvider>{children}</AppContextProvider>
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>

@@ -16,6 +16,9 @@ const AddProduct = () => {
   const [price, setPrice] = useState("");
   const [offerPrice, setOfferPrice] = useState("");
   const [showDiscount, setShowDiscount] = useState(true);
+  const [measureType, setMeasureType] = useState("none");
+  const [weightGrams, setWeightGrams] = useState("");
+  const [volumeMl, setVolumeMl] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +31,10 @@ const AddProduct = () => {
     formData.append("price", price);
     formData.append("offerPrice", resolvedOfferPrice);
     formData.append("showDiscount", showDiscount);
+    const payloadWeightGrams = measureType === "weight" ? weightGrams : "";
+    const payloadVolumeMl = measureType === "volume" ? volumeMl : "";
+    formData.append("weightGrams", payloadWeightGrams);
+    formData.append("volumeMl", payloadVolumeMl);
 
     for (let i = 0; i < files.length; i++) {
       formData.append("images", files[i]);
@@ -47,6 +54,9 @@ const AddProduct = () => {
         setPrice("");
         setOfferPrice("");
         setShowDiscount(true);
+        setMeasureType("none");
+        setWeightGrams("");
+        setVolumeMl("");
       } else {
         toast.error(data.message);
       }
@@ -121,6 +131,62 @@ const AddProduct = () => {
           ></textarea>
         </div>
         <div className="flex items-center gap-5 flex-wrap">
+          <div className="flex flex-col gap-1 w-40">
+            <label className="text-base font-medium" htmlFor="product-measure">
+              Mjera
+            </label>
+            <select
+              id="product-measure"
+              className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
+              onChange={(e) => {
+                const value = e.target.value;
+                setMeasureType(value);
+                if (value !== "weight") setWeightGrams("");
+                if (value !== "volume") setVolumeMl("");
+              }}
+              value={measureType}
+            >
+              <option value="none">Nije navedeno</option>
+              <option value="weight">Gramaza (g)</option>
+              <option value="volume">Zapremina (ml)</option>
+            </select>
+          </div>
+          {measureType === "weight" && (
+            <div className="flex flex-col gap-1 w-32">
+              <label className="text-base font-medium" htmlFor="product-weight">
+                Gramaza (g)
+              </label>
+              <input
+                id="product-weight"
+                type="number"
+                placeholder="0"
+                className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
+                onChange={(e) => setWeightGrams(e.target.value)}
+                value={weightGrams}
+                min="0"
+                required
+              />
+            </div>
+          )}
+          {measureType === "volume" && (
+            <div className="flex flex-col gap-1 w-32">
+              <label className="text-base font-medium" htmlFor="product-volume">
+                Zapremina (ml)
+              </label>
+              <input
+                id="product-volume"
+                type="number"
+                placeholder="0"
+                className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
+                onChange={(e) => setVolumeMl(e.target.value)}
+                value={volumeMl}
+                min="0"
+                required
+              />
+            </div>
+          )}
+        </div>
+        <div className="flex items-center gap-5 flex-wrap">
           <div className="flex flex-col gap-1 w-32">
             <label className="text-base font-medium" htmlFor="category">
               Kategorija
@@ -138,6 +204,7 @@ const AddProduct = () => {
               <option value="Laptop">Laptop</option>
               <option value="Camera">Kamera</option>
               <option value="Accessories">Dodaci</option>
+              <option value="Melem">Melem</option>
             </select>
           </div>
           <div className="flex flex-col gap-1 w-32">

@@ -16,6 +16,7 @@ const categoryLabels = {
   Laptop: "Laptop",
   Camera: "Kamera",
   Accessories: "Dodaci",
+  Melem: "Melem"
 };
 
 const ProductList = () => {
