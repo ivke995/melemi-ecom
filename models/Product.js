@@ -9,6 +9,8 @@ const productSchema = new mongoose.Schema({
   showDiscount: {type: Boolean, default: true},
   image: {type: Array, required: true},
   category: {type: String, required: true},
+  weightGrams: {type: Number},
+  volumeMl: {type: Number},
   date: {type: Number, required: true}
 })
 

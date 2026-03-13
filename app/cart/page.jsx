@@ -14,10 +14,13 @@ const Cart = () => {
     cartItems,
     addToCart,
     updateCartQuantity,
+    clearCart,
     getCartCount,
     currency,
     getProductPrice,
   } = useAppContext();
+
+  const cartCount = getCartCount();
 
   return (
     <>
@@ -28,7 +31,17 @@ const Cart = () => {
             <p className="text-2xl md:text-3xl text-gray-500">
               Vaša <span className="font-medium text-orange-600">korpa</span>
             </p>
-            <p className="text-lg md:text-xl text-gray-500/80">{getCartCount()} stavki</p>
+            <div className="flex items-center gap-4">
+              <p className="text-lg md:text-xl text-gray-500/80">{cartCount} stavki</p>
+              {cartCount > 0 ? (
+                <button
+                  className="text-sm text-orange-600 hover:text-orange-700 transition"
+                  onClick={clearCart}
+                >
+                  Isprazni korpu
+                </button>
+              ) : null}
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full table-auto">

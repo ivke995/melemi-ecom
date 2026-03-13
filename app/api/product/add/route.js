@@ -26,10 +26,20 @@ export async function POST(request) {
     const category = formData.get("category");
     const price = formData.get("price");
     const offerPrice = formData.get("offerPrice");
+    const weightGramsRaw = formData.get("weightGrams");
+    const volumeMlRaw = formData.get("volumeMl");
     const showDiscountValue = formData.get("showDiscount");
     const showDiscount =
       showDiscountValue === null ? true : showDiscountValue === "true";
     const resolvedOfferPrice = showDiscount ? offerPrice : price;
+    const weightGrams =
+      weightGramsRaw === null || weightGramsRaw === ""
+        ? null
+        : Number(weightGramsRaw);
+    const volumeMl =
+      volumeMlRaw === null || volumeMlRaw === ""
+        ? null
+        : Number(volumeMlRaw);
 
     const files = formData.getAll("images");
     if (!files || files.length === 0) {
@@ -71,6 +81,8 @@ export async function POST(request) {
       offerPrice: Number(resolvedOfferPrice),
       showDiscount,
       image,
+      weightGrams,
+      volumeMl,
       date: Date.now(),
     });
     return NextResponse.json({

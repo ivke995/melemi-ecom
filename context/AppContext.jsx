@@ -110,6 +110,28 @@ export const AppContextProvider = (props) => {
     }
   };
 
+  const clearCart = async () => {
+    const cartData = {};
+    setCartItems(cartData);
+
+    if (user) {
+      try {
+        const token = await getToken();
+        await axios.post(
+          "/api/cart/update",
+          { cartData },
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+        toast.success("Korpa je ispražnjena");
+      } catch (error) {
+        toast.error(error.message);
+      }
+      return;
+    }
+
+    toast.success("Korpa je ispražnjena");
+  };
+
   const getCartCount = () => {
     let totalCount = 0;
     for (const items in cartItems) {
@@ -192,6 +214,7 @@ export const AppContextProvider = (props) => {
     setCartItems,
     addToCart,
     updateCartQuantity,
+    clearCart,
     getCartCount,
     getProductPrice,
     getCartAmount,

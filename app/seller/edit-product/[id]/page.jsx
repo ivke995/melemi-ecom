@@ -20,6 +20,9 @@ const EditProduct = () => {
   const [price, setPrice] = useState("");
   const [offerPrice, setOfferPrice] = useState("");
   const [showDiscount, setShowDiscount] = useState(true);
+  const [measureType, setMeasureType] = useState("none");
+  const [weightGrams, setWeightGrams] = useState("");
+  const [volumeMl, setVolumeMl] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -38,6 +41,18 @@ const EditProduct = () => {
     setPrice(product.price ?? "");
     setOfferPrice(product.offerPrice ?? "");
     setShowDiscount(product.showDiscount !== false);
+    const hasWeight =
+      product.weightGrams !== null && product.weightGrams !== undefined;
+    const hasVolume =
+      product.volumeMl !== null && product.volumeMl !== undefined;
+    const resolvedMeasureType = hasWeight
+      ? "weight"
+      : hasVolume
+        ? "volume"
+        : "none";
+    setMeasureType(resolvedMeasureType);
+    setWeightGrams(hasWeight ? String(product.weightGrams) : "");
+    setVolumeMl(hasVolume ? String(product.volumeMl) : "");
     const slots = Array.from({ length: 4 }, (_, index) => {
       return product.image?.[index] || null;
     });
@@ -65,6 +80,10 @@ const EditProduct = () => {
     formData.append("price", price);
     formData.append("offerPrice", resolvedOfferPrice);
     formData.append("showDiscount", showDiscount);
+    const payloadWeightGrams = measureType === "weight" ? weightGrams : "";
+    const payloadVolumeMl = measureType === "volume" ? volumeMl : "";
+    formData.append("weightGrams", payloadWeightGrams);
+    formData.append("volumeMl", payloadVolumeMl);
 
     const existingImages = imageSlots.map((slot, index) => {
       if (typeof slot === "string") return slot;
@@ -115,7 +134,9 @@ const EditProduct = () => {
               return (
                 <label key={index} htmlFor={`image${index}`}>
                   <input
-                    onChange={(e) => handleImageChange(index, e.target.files[0])}
+                    onChange={(e) =>
+                      handleImageChange(index, e.target.files[0])
+                    }
                     type="file"
                     id={`image${index}`}
                     hidden
@@ -147,7 +168,10 @@ const EditProduct = () => {
           />
         </div>
         <div className="flex flex-col gap-1 max-w-md">
-          <label className="text-base font-medium" htmlFor="product-description">
+          <label
+            className="text-base font-medium"
+            htmlFor="product-description"
+          >
             Opis proizvoda
           </label>
           <textarea
@@ -159,6 +183,62 @@ const EditProduct = () => {
             value={description}
             required
           ></textarea>
+        </div>
+        <div className="flex items-center gap-5 flex-wrap">
+          <div className="flex flex-col gap-1 w-40">
+            <label className="text-base font-medium" htmlFor="product-measure">
+              Mjera
+            </label>
+            <select
+              id="product-measure"
+              className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
+              onChange={(e) => {
+                const value = e.target.value;
+                setMeasureType(value);
+                if (value !== "weight") setWeightGrams("");
+                if (value !== "volume") setVolumeMl("");
+              }}
+              value={measureType}
+            >
+              <option value="none">Nije navedeno</option>
+              <option value="weight">Gramaza (g)</option>
+              <option value="volume">Zapremina (ml)</option>
+            </select>
+          </div>
+          {measureType === "weight" && (
+            <div className="flex flex-col gap-1 w-32">
+              <label className="text-base font-medium" htmlFor="product-weight">
+                Gramaza (g)
+              </label>
+              <input
+                id="product-weight"
+                type="number"
+                placeholder="0"
+                className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
+                onChange={(e) => setWeightGrams(e.target.value)}
+                value={weightGrams}
+                min="0"
+                required
+              />
+            </div>
+          )}
+          {measureType === "volume" && (
+            <div className="flex flex-col gap-1 w-32">
+              <label className="text-base font-medium" htmlFor="product-volume">
+                Zapremina (ml)
+              </label>
+              <input
+                id="product-volume"
+                type="number"
+                placeholder="0"
+                className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
+                onChange={(e) => setVolumeMl(e.target.value)}
+                value={volumeMl}
+                min="0"
+                required
+              />
+            </div>
+          )}
         </div>
         <div className="flex items-center gap-5 flex-wrap">
           <div className="flex flex-col gap-1 w-32">
@@ -178,6 +258,7 @@ const EditProduct = () => {
               <option value="Laptop">Laptop</option>
               <option value="Camera">Kamera</option>
               <option value="Accessories">Dodaci</option>
+              <option value="Melem">Melem</option>
             </select>
           </div>
           <div className="flex flex-col gap-1 w-32">

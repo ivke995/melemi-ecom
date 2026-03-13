@@ -17,6 +17,7 @@ const categoryLabels = {
     Laptop: "Laptop",
     Camera: "Kamera",
     Accessories: "Dodaci",
+    Melem: "Melem"
 };
 
 const Product = () => {
@@ -39,6 +40,20 @@ const Product = () => {
 
     const showDiscount = productData?.showDiscount !== false
     const displayPrice = showDiscount ? productData?.offerPrice : productData?.price
+    const weightGrams = productData?.weightGrams
+    const volumeMl = productData?.volumeMl
+    const hasWeight = Number.isFinite(weightGrams)
+    const hasVolume = Number.isFinite(volumeMl)
+    const measureLabel = hasWeight
+        ? "Gramaza"
+        : hasVolume
+            ? "Zapremina"
+            : "Gramaza / Zapremina"
+    const measureValue = hasWeight
+        ? `${weightGrams} g`
+        : hasVolume
+            ? `${volumeMl} ml`
+            : "Nije navedeno"
 
     return productData ? (<>
         <Navbar />
@@ -99,8 +114,8 @@ const Product = () => {
                                     <td className="text-gray-800/50 ">Generički</td>
                                 </tr>
                                 <tr>
-                                    <td className="text-gray-600 font-medium">Boja</td>
-                                    <td className="text-gray-800/50 ">Višebojno</td>
+                                    <td className="text-gray-600 font-medium">{measureLabel}</td>
+                                    <td className="text-gray-800/50 ">{measureValue}</td>
                                 </tr>
                                 <tr>
                                     <td className="text-gray-600 font-medium">Kategorija</td>

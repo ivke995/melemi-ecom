@@ -1,6 +1,20 @@
-import { clerkMiddleware } from '@clerk/nextjs/server';
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
-export default clerkMiddleware();
+const isSellerRoute = createRouteMatcher(["/seller(.*)"]);
+
+export default clerkMiddleware(async (auth, request) => {
+  if (!isSellerRoute(request)) return;
+
+  const authData = await auth.protect();
+  const sessionClaims = authData.sessionClaims as
+    | { publicMetadata?: { role?: string } }
+    | undefined;
+  const role = sessionClaims?.publicMetadata?.role;
+  if (role !== "seller") {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+});
 
 export const config = {
   matcher: [
