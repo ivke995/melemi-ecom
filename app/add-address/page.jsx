@@ -11,6 +11,8 @@ import axios from "axios";
 const AddAddress = () => {
   const { getToken, router } = useAppContext();
 
+  const countryOptions = ["Bosna i Hercegovina", "Srbija"];
+
   const [address, setAddress] = useState({
     fullName: "",
     phoneNumber: "",
@@ -19,6 +21,13 @@ const AddAddress = () => {
     city: "",
     state: "",
   });
+
+  const normalizedCountry = address.state
+    ? address.state.toLowerCase().trim()
+    : "";
+  const isBosnia =
+    normalizedCountry === "bosna i hercegovina" || normalizedCountry === "bih";
+  const isSerbia = normalizedCountry === "srbija";
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -95,16 +104,31 @@ const AddAddress = () => {
                 }
                 value={address.city}
               />
-              <input
+              <select
                 className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
-                type="text"
-                placeholder="Država"
                 onChange={(e) =>
                   setAddress({ ...address, state: e.target.value })
                 }
                 value={address.state}
-              />
+              >
+                <option value="">Izaberite državu</option>
+                {countryOptions.map((country) => (
+                  <option key={country} value={country}>
+                    {country}
+                  </option>
+                ))}
+              </select>
             </div>
+            {address.state && isBosnia && (
+              <p className="text-xs text-gray-500">
+                Dostava za Bosnu i Hercegovinu iznosi 9 KM.
+              </p>
+            )}
+            {address.state && isSerbia && (
+              <p className="text-xs text-gray-500">
+                Dostava za Srbiju iznosi 22 KM.
+              </p>
+            )}
           </div>
           <button
             type="submit"

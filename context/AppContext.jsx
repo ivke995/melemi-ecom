@@ -43,9 +43,7 @@ export const AppContextProvider = (props) => {
 
   const fetchUserData = async () => {
     try {
-      if (user.publicMetadata.role === "seller") {
-        setIsSeller(true);
-      }
+      setIsSeller(user?.publicMetadata?.role === "seller");
 
       const token = await getToken();
       const { data } = await axios.get("/api/user/data", {
@@ -54,7 +52,8 @@ export const AppContextProvider = (props) => {
 
       if (data.success) {
         setUserData(data.user);
-        setCartItems(data.user.cartItems);
+        const cartData = data.user.cartItems ?? data.user.cartItem ?? {};
+        setCartItems(cartData);
       } else {
         toast.error(data.message);
       }
@@ -83,7 +82,9 @@ export const AppContextProvider = (props) => {
       } catch (error) {
         toast.error(error.message);
       }
+      return;
     }
+    toast.success("Stavka je dodata u korpu");
   };
 
   const updateCartQuantity = async (itemId, quantity) => {
@@ -195,7 +196,10 @@ export const AppContextProvider = (props) => {
   useEffect(() => {
     if (user) {
       fetchUserData();
+      return;
     }
+    setIsSeller(false);
+    setUserData(false);
   }, [user]);
 
   const value = {

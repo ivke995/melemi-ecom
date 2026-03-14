@@ -32,7 +32,12 @@ const Footer = () => {
                 <Link className="hover:underline transition" href="/kontakt">Kontakt</Link>
               </li>
               <li>
-                <Link className="hover:underline transition" href="#">Politika privatnosti</Link>
+                <Link
+                  className="hover:underline transition"
+                  href="/politika-privatnosti"
+                >
+                  Politika privatnosti
+                </Link>
               </li>
             </ul>
           </div>
