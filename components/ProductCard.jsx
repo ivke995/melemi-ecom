@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
 
     return (
         <div
-            onClick={() => { router.push('/product/' + product._id) }}
+            onClick={() => { router.push('/proizvod/' + product._id) }}
             className="flex flex-col items-start gap-0.5 max-w-[200px] w-full cursor-pointer"
         >
             <div className="cursor-pointer group relative bg-gray-500/10 rounded-lg w-full h-52 flex items-center justify-center">

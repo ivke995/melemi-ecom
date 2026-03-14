@@ -106,7 +106,7 @@ const EditProduct = () => {
 
       if (data.success) {
         toast.success(data.message);
-        router.push("/seller/product-list");
+        router.push("/prodavac/lista-proizvoda");
       } else {
         toast.error(data.message);
       }

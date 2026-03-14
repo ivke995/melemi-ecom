@@ -1,7 +1,7 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const isSellerRoute = createRouteMatcher(["/seller(.*)"]);
+const isSellerRoute = createRouteMatcher(["/prodavac(.*)"]);
 
 export default clerkMiddleware(async (auth, request) => {
   if (!isSellerRoute(request)) return;
