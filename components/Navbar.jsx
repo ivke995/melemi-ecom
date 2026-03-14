@@ -39,7 +39,7 @@ const Navbar = () => {
 
         {isSeller && (
           <button
-            onClick={() => router.push("/seller")}
+            onClick={() => router.push("/prodavac")}
             className="text-xs border px-4 py-1.5 rounded-full"
           >
             Panel prodavca
@@ -63,7 +63,7 @@ const Navbar = () => {
           ))}
         </div>
         <button
-          onClick={() => router.push("/cart")}
+          onClick={() => router.push("/korpa")}
           aria-label="Korpa"
           className="relative flex items-center justify-center"
         >
@@ -82,14 +82,14 @@ const Navbar = () => {
               <UserButton.Action
                 label="Korpa"
                 labelIcon={<CartIcon />}
-                onClick={() => router.push("/cart")}
+                onClick={() => router.push("/korpa")}
               />
             </UserButton.MenuItems>
             <UserButton.MenuItems>
               <UserButton.Action
                 label="Moje narudžbe"
                 labelIcon={<BagIcon />}
-                onClick={() => router.push("/my-orders")}
+                onClick={() => router.push("/moje-narudzbe")}
               />
             </UserButton.MenuItems>
           </UserButton>
@@ -107,14 +107,14 @@ const Navbar = () => {
       <div className="flex items-center md:hidden gap-3">
         {isSeller && (
           <button
-            onClick={() => router.push("/seller")}
+            onClick={() => router.push("/prodavac")}
             className="text-xs border px-4 py-1.5 rounded-full"
           >
             Panel prodavca
           </button>
         )}
         <button
-          onClick={() => router.push("/cart")}
+          onClick={() => router.push("/korpa")}
           aria-label="Korpa"
           className="relative flex items-center justify-center"
         >
@@ -147,14 +147,14 @@ const Navbar = () => {
               <UserButton.Action
                 label="Korpa"
                 labelIcon={<CartIcon />}
-                onClick={() => router.push("/cart")}
+                onClick={() => router.push("/korpa")}
               />
             </UserButton.MenuItems>
             <UserButton.MenuItems>
               <UserButton.Action
                 label="Moje narudžbe"
                 labelIcon={<BagIcon />}
-                onClick={() => router.push("/my-orders")}
+                onClick={() => router.push("/moje-narudzbe")}
               />
             </UserButton.MenuItems>
           </UserButton>

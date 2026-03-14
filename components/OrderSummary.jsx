@@ -114,7 +114,7 @@ const OrderSummary = () => {
         if (typeof window !== "undefined" && !user) {
           window.localStorage.removeItem("guest-cart");
         }
-        router.push("/order-placed");
+        router.push("/narudzba-uspjesna");
       } else {
         toast.error(data.message);
       }
@@ -181,7 +181,7 @@ const OrderSummary = () => {
                       </li>
                     ))}
                     <li
-                      onClick={() => router.push("/add-address")}
+                      onClick={() => router.push("/dodaj-adresu")}
                       className="px-4 py-2 hover:bg-gray-500/10 cursor-pointer text-center"
                     >
                       + Dodaj novu adresu

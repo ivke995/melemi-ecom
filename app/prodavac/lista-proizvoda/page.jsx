@@ -162,7 +162,7 @@ const ProductList = () => {
                           {isActive ? "Aktivan" : "Skriven"}
                         </span>
                         <button
-                          onClick={() => router.push(`/product/${product._id}`)}
+                          onClick={() => router.push(`/proizvod/${product._id}`)}
                           className="flex items-center gap-1 px-1.5 md:px-3.5 py-2 bg-orange-600 text-white rounded-md"
                         >
                           <span className="hidden md:block">Posjeti</span>
@@ -174,7 +174,7 @@ const ProductList = () => {
                         </button>
                         <button
                           onClick={() =>
-                            router.push(`/seller/edit-product/${product._id}`)
+                            router.push(`/prodavac/uredi-proizvod/${product._id}`)
                           }
                           className="px-2.5 md:px-3.5 py-2 border border-gray-300 text-gray-600 rounded-md hover:bg-gray-50"
                         >

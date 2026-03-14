@@ -40,7 +40,7 @@ const AddAddress = () => {
       );
       if (data.success) {
         toast.success(data.message);
-        router.push("/cart");
+        router.push("/korpa");
       } else {
         toast.error(data.message);
       }
