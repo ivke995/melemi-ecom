@@ -11,7 +11,12 @@ export async function GET(request) {
     if (!user) {
       return NextResponse.json({ success: false, message: "Korisnik nije pronađen" });
     }
-    return NextResponse.json({ success: true, user });
+    const userData = user.toObject();
+    const cartItems = userData.cartItems ?? userData.cartItem ?? {};
+    return NextResponse.json({
+      success: true,
+      user: { ...userData, cartItems },
+    });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message });
   }

@@ -11,7 +11,7 @@ export default clerkMiddleware(async (auth, request) => {
     | { publicMetadata?: { role?: string } }
     | undefined;
   const role = sessionClaims?.publicMetadata?.role;
-  if (role !== "seller") {
+  if (role && role !== "seller") {
     return NextResponse.redirect(new URL("/", request.url));
   }
 });

@@ -10,7 +10,7 @@ export async function GET(request) {
     await connectDB();
     const user = await User.findById(userId);
 
-    const { cartItems } = user;
+    const cartItems = user.cartItems ?? user.cartItem ?? {};
 
     return NextResponse.json({ success: true, cartItems });
   } catch (error) {

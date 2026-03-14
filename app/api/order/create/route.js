@@ -18,6 +18,7 @@ export async function POST(request) {
 
     let orderUserId = userId;
     let orderAddressId = address;
+    let addressState = "";
 
     if (!userId) {
       const { fullName, phoneNumber, pincode, area, city, state } =
@@ -40,11 +41,21 @@ export async function POST(request) {
       });
       orderUserId = guestId;
       orderAddressId = guestAddress._id;
+      addressState = state;
     } else if (!address || typeof address !== "string") {
       return NextResponse.json({
         success: false,
         message: "Molimo izaberite adresu",
       });
+    } else {
+      const selectedAddress = await Address.findById(address);
+      if (!selectedAddress) {
+        return NextResponse.json({
+          success: false,
+          message: "Adresa nije pronađena",
+        });
+      }
+      addressState = selectedAddress.state;
     }
     // calculate amount using items
     const amount = await items.reduce(async (accPromise, item) => {
@@ -56,13 +67,22 @@ export async function POST(request) {
       return acc + unitPrice * item.quantity;
     }, 0);
 
+    const normalizedCountry = addressState
+      ? addressState.toLowerCase().trim().replace(/\s+/g, " ")
+      : "";
+    const isBosnia =
+      normalizedCountry === "bosna i hercegovina" || normalizedCountry === "bih";
+    const isSerbia = normalizedCountry === "srbija";
+    const shippingCost = isBosnia ? 9 : isSerbia ? 22 : 0;
+    const taxAmount = Math.floor(amount * 0.02);
+
     await inngest.send({
       name: "order/created",
       data: {
         userId: orderUserId,
         address: orderAddressId,
         items,
-        amount: amount + Math.floor(amount * 0.02),
+        amount: amount + taxAmount + shippingCost,
         date: Date.now(),
       },
     });

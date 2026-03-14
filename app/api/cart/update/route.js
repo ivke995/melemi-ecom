@@ -11,8 +11,14 @@ export async function POST(request) {
     await connectDB();
 
     const user = await User.findById(userId);
+    if (!user) {
+      return NextResponse.json({
+        success: false,
+        message: "Korisnik nije pronađen",
+      });
+    }
 
-    user.cartItems = cartData;
+    user.cartItems = cartData || {};
     await user.save();
 
     return NextResponse.json({ success: true });

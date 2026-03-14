@@ -15,6 +15,8 @@ const OrderSummary = () => {
     setCartItems,
   } = useAppContext();
 
+  const countryOptions = ["Bosna i Hercegovina", "Srbija"];
+
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [guestAddress, setGuestAddress] = useState({
@@ -27,6 +29,17 @@ const OrderSummary = () => {
   });
 
   const [userAddresses, setUserAddresses] = useState([]);
+
+  const selectedCountry = user ? selectedAddress?.state : guestAddress.state;
+  const normalizedCountry = selectedCountry
+    ? selectedCountry.toLowerCase().trim()
+    : "";
+  const isBosnia =
+    normalizedCountry === "bosna i hercegovina" || normalizedCountry === "bih";
+  const isSerbia = normalizedCountry === "srbija";
+  const shippingCost = isBosnia ? 9 : isSerbia ? 22 : 0;
+  const taxAmount = Math.floor(getCartAmount() * 0.02);
+  const totalAmount = getCartAmount() + taxAmount + shippingCost;
 
   const fetchUserAddresses = async () => {
     try {
@@ -244,10 +257,8 @@ const OrderSummary = () => {
                     }
                     value={guestAddress.city}
                   />
-                  <input
+                  <select
                     className="px-2 py-2.5 focus:border-orange-500 transition border border-gray-500/30 rounded outline-none w-full text-gray-500"
-                    type="text"
-                    placeholder="Država"
                     onChange={(e) =>
                       setGuestAddress({
                         ...guestAddress,
@@ -255,8 +266,25 @@ const OrderSummary = () => {
                       })
                     }
                     value={guestAddress.state}
-                  />
+                  >
+                    <option value="">Izaberite državu</option>
+                    {countryOptions.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
                 </div>
+                {guestAddress.state && isBosnia && (
+                  <p className="text-xs text-gray-500">
+                    Dostava za Bosnu i Hercegovinu iznosi 9 KM.
+                  </p>
+                )}
+                {guestAddress.state && isSerbia && (
+                  <p className="text-xs text-gray-500">
+                    Dostava za Srbiju iznosi 22 KM.
+                  </p>
+                )}
               </div>
             </>
           )}
@@ -289,18 +317,20 @@ const OrderSummary = () => {
           </div>
           <div className="flex justify-between">
             <p className="text-gray-600">Trošak dostave</p>
-            <p className="font-medium text-gray-800">Besplatno</p>
+            <p className="font-medium text-gray-800">
+              {selectedCountry ? `${shippingCost} ${currency}` : "—"}
+            </p>
           </div>
           <div className="flex justify-between">
             <p className="text-gray-600">Porez (2%)</p>
             <p className="font-medium text-gray-800">
-              {Math.floor(getCartAmount() * 0.02)} {currency}
+              {taxAmount} {currency}
             </p>
           </div>
           <div className="flex justify-between text-lg md:text-xl font-medium border-t pt-3">
             <p>Ukupno</p>
             <p>
-              {getCartAmount() + Math.floor(getCartAmount() * 0.02)} {currency}
+              {totalAmount} {currency}
             </p>
           </div>
         </div>
