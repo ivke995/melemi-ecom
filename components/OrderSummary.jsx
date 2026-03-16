@@ -52,8 +52,10 @@ const OrderSummary = () => {
         if (data.addresses.length > 0) {
           setSelectedAddress(data.addresses[0]);
         } else {
-          toast.error(data.message);
+          setSelectedAddress(null);
         }
+      } else {
+        toast.error(data.message || "Greška pri učitavanju adresa");
       }
     } catch (error) {
       toast.error(error.message);

@@ -1,15 +1,31 @@
 import connectDB from "@/config/db";
 import User from "@/models/User";
-import { getAuth } from "@clerk/nextjs/server";
+import { clerkClient, getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
   try {
     const { userId } = getAuth(request);
+    if (!userId) {
+      return NextResponse.json({ success: false, message: "Unauthorized" });
+    }
     await connectDB();
-    const user = await User.findById(userId);
+    let user = await User.findById(userId);
     if (!user) {
-      return NextResponse.json({ success: false, message: "Korisnik nije pronađen" });
+      const client =
+        typeof clerkClient === "function" ? await clerkClient() : clerkClient;
+      const clerkUser = await client.users.getUser(userId);
+      const primaryEmail =
+        clerkUser.emailAddresses?.[0]?.emailAddress ||
+        `${userId}@no-email.local`;
+      const fullName = `${clerkUser.firstName || ""} ${clerkUser.lastName || ""}`.trim();
+      const userData = {
+        _id: clerkUser.id,
+        email: primaryEmail,
+        name: fullName || clerkUser.username || "Kupac",
+        imageUrl: clerkUser.imageUrl || "",
+      };
+      user = await User.create(userData);
     }
     const userData = user.toObject();
     const cartItems = userData.cartItems ?? userData.cartItem ?? {};
