@@ -39,6 +39,9 @@ import asus_laptop_image from "./asus_laptop_image.png";
 import projector_image from "./projector_image.png";
 import playstation_image from "./playstation_image.png";
 import girl_with_headphone_image from "./girl_with_headphone_image.png";
+import girl_with_sirup_image from "./girl_with_sirup_new.jpg";
+import girl_with_crema_image from "./girl_with_crema.jpg";
+import girl_with_something_nice from "./girl_with_something_nice.png";
 import girl_with_earphone_image from "./girl_with_earphone_image.png";
 import md_controller_image from "./md_controller_image.png";
 import sm_controller_image from "./sm_controller_image.png";
@@ -93,6 +96,9 @@ export const assets = {
   playstation_image,
   girl_with_headphone_image,
   girl_with_earphone_image,
+  girl_with_sirup_image,
+  girl_with_something_nice,
+  girl_with_crema_image,
   md_controller_image,
   sm_controller_image,
   jbl_soundbox_image,

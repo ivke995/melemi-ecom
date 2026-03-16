@@ -5,21 +5,21 @@ import Image from "next/image";
 const products = [
   {
     id: 1,
-    image: assets.girl_with_headphone_image,
-    title: "Neuporediv zvuk",
-    description: "Doživite kristalno čist zvuk uz premium slušalice.",
+    image: assets.girl_with_sirup_image,
+    title: "Biljni sirupi za imunitet",
+    description: "Prirodne mješavine bilja koje nježno podržavaju vitalnost.",
   },
   {
     id: 2,
-    image: assets.girl_with_earphone_image,
-    title: "Ostanite povezani",
-    description: "Kompaktne i moderne slušalice za svaku priliku.",
+    image: assets.girl_with_something_nice,
+    title: "Melemi za mekšu kožu",
+    description: "Ručne formule za umirenje i zaštitu kože kroz dan.",
   },
   {
     id: 3,
-    image: assets.boy_with_laptop_image,
-    title: "Snaga u svakom pikselu",
-    description: "Kupite najnovije laptope za posao, gejming i još mnogo toga.",
+    image: assets.girl_with_crema_image,
+    title: "Kreme za svakodnevnu njegu",
+    description: "Hranljive teksture koje obnavljaju i zadržavaju vlagu.",
   },
 ];
 
