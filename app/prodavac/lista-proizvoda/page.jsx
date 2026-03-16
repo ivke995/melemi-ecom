@@ -9,14 +9,12 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const categoryLabels = {
-  Earphone: "Slušalice (in-ear)",
-  Headphone: "Slušalice (over-ear)",
-  Watch: "Sat",
-  Smartphone: "Pametni telefon",
-  Laptop: "Laptop",
-  Camera: "Kamera",
-  Accessories: "Dodaci",
-  Melem: "Melem"
+  Melem: "Melem",
+  Krema: "Krema",
+  Sirup: "Sirup",
+  Ulje: "Ulje",
+  Piling: "Piling",
+  Set: "Set"
 };
 
 const ProductList = () => {

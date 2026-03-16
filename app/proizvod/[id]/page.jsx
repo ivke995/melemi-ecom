@@ -10,14 +10,12 @@ import { useAppContext } from "@/context/AppContext";
 import React from "react";
 
 const categoryLabels = {
-    Earphone: "Slušalice (in-ear)",
-    Headphone: "Slušalice (over-ear)",
-    Watch: "Sat",
-    Smartphone: "Pametni telefon",
-    Laptop: "Laptop",
-    Camera: "Kamera",
-    Accessories: "Dodaci",
-    Melem: "Melem"
+    Melem: "Melem",
+    Krema: "Krema",
+    Sirup: "Sirup",
+    Ulje: "Ulje",
+    Piling: "Piling",
+    Set: "Set"
 };
 
 const Product = () => {

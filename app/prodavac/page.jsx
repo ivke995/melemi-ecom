@@ -12,7 +12,7 @@ const AddProduct = () => {
   const [files, setFiles] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Earphone");
+  const [category, setCategory] = useState("Melem");
   const [price, setPrice] = useState("");
   const [offerPrice, setOfferPrice] = useState("");
   const [showDiscount, setShowDiscount] = useState(true);
@@ -50,7 +50,7 @@ const AddProduct = () => {
         setFiles([]);
         setName("");
         setDescription("");
-        setCategory("Earphone");
+        setCategory("Melem");
         setPrice("");
         setOfferPrice("");
         setShowDiscount(true);
@@ -197,14 +197,12 @@ const AddProduct = () => {
               onChange={(e) => setCategory(e.target.value)}
               defaultValue={category}
             >
-              <option value="Earphone">Slušalice (in-ear)</option>
-              <option value="Headphone">Slušalice (over-ear)</option>
-              <option value="Watch">Sat</option>
-              <option value="Smartphone">Pametni telefon</option>
-              <option value="Laptop">Laptop</option>
-              <option value="Camera">Kamera</option>
-              <option value="Accessories">Dodaci</option>
               <option value="Melem">Melem</option>
+              <option value="Krema">Krema</option>
+              <option value="Sirup">Sirup</option>
+              <option value="Ulje">Ulje</option>
+              <option value="Piling">Piling</option>
+              <option value="Set">Set</option>
             </select>
           </div>
           <div className="flex flex-col gap-1 w-32">
