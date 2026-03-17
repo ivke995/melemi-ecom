@@ -8,10 +8,11 @@ const ProductCard = ({ product }) => {
     const { currency, router, getProductPrice } = useAppContext()
     const showDiscount = product.showDiscount !== false
     const displayPrice = getProductPrice(product)
+    const productSlug = product.slug || product._id
 
     return (
         <div
-            onClick={() => { router.push('/proizvod/' + product._id) }}
+            onClick={() => { router.push('/proizvod/' + productSlug) }}
             className="flex flex-col items-start gap-0.5 max-w-[200px] w-full cursor-pointer"
         >
             <div className="cursor-pointer group relative bg-gray-500/10 rounded-lg w-full h-52 flex items-center justify-center">

@@ -1,5 +1,6 @@
 import connectDB from "@/config/db";
 import authSeller from "@/lib/authSeller";
+import { slugify } from "@/lib/blog";
 import Product from "@/models/Product";
 import { getAuth } from "@clerk/nextjs/server";
 import { v2 as cloudinary } from "cloudinary";
@@ -72,9 +73,20 @@ export async function POST(request) {
     const image = result.map((result) => result.secure_url);
 
     await connectDB();
+    const baseSlug = slugify(name || "");
+    const fallbackSlug = baseSlug || `proizvod-${Date.now()}`;
+    let resolvedSlug = fallbackSlug;
+    let suffix = 1;
+
+    while (await Product.findOne({ slug: resolvedSlug }).lean()) {
+      resolvedSlug = `${fallbackSlug}-${suffix}`;
+      suffix += 1;
+    }
+
     const newProduct = await Product.create({
       userId,
       name,
+      slug: resolvedSlug,
       description,
       category,
       price: Number(price),

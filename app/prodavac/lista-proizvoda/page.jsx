@@ -160,7 +160,9 @@ const ProductList = () => {
                           {isActive ? "Aktivan" : "Skriven"}
                         </span>
                         <button
-                          onClick={() => router.push(`/proizvod/${product._id}`)}
+                          onClick={() =>
+                            router.push(`/proizvod/${product.slug || product._id}`)
+                          }
                           className="flex items-center gap-1 px-1.5 md:px-3.5 py-2 bg-orange-600 text-white rounded-md"
                         >
                           <span className="hidden md:block">Posjeti</span>

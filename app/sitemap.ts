@@ -1,9 +1,26 @@
 import type { MetadataRoute } from "next";
+import connectDB from "@/config/db";
+import Product from "@/models/Product";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+
+  await connectDB();
+  const products = await (Product as any).find({
+    isActive: { $ne: false },
+    slug: { $exists: true, $ne: "" },
+  })
+    .select("slug date")
+    .lean();
+
+  const productEntries = products.map((product: { slug: string; date?: number }) => ({
+    url: `${baseUrl}/proizvod/${product.slug}`,
+    lastModified: product.date ? new Date(product.date) : lastModified,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
 
   return [
     {
@@ -36,5 +53,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.7,
     },
+    ...productEntries,
   ];
 }
