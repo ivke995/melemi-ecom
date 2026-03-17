@@ -1,6 +1,6 @@
-# Bojana Melemi — eCommerce Storefront
+# Melemi Bojana — eCommerce Storefront
 
-Bojana Melemi is a full-stack Next.js (App Router) ecommerce app with Clerk auth, MongoDB (Mongoose), Cloudinary image uploads, and background jobs via Inngest. The UI is localized in Serbian/Croatian, with storefront routes like `/prodavnica`, `/o-nama`, and `/kontakt`.
+Melemi Bojana is a full-stack Next.js (App Router) ecommerce app with Clerk auth, MongoDB (Mongoose), Cloudinary image uploads, and background jobs via Inngest. The UI is localized in Serbian/Croatian, with storefront routes like `/prodavnica`, `/o-nama`, and `/kontakt`.
 
 ## Features
 

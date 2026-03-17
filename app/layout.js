@@ -8,8 +8,8 @@ import { Analytics } from "@vercel/analytics/react";
 const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export const metadata = {
-  title: "Bojana Melemi | Prirodna njega tijela",
-  description: "Bojana Melemi veb-sajt je mjesto gdje ćete pronaći prirodne meleme i njegu tijela.",
+  title: "Melemi Bojana | Prirodna njega tijela",
+  description: "Melemi Bojana veb-sajt je mjesto gdje ćete pronaći prirodne meleme i njegu tijela.",
   icons: {
     icon: "/melem-favicon-32.png",
   },

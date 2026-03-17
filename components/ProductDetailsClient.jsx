@@ -141,7 +141,10 @@ const ProductDetailsClient = ({ product, featuredProducts = [] }) => {
             <ProductCard key={index} product={featuredProduct} />
           ))}
         </div>
-        <button className="px-8 py-2 mb-16 border rounded text-gray-500/70 hover:bg-slate-50/90 transition">
+        <button
+          onClick={() => router.push("/prodavnica")}
+          className="px-8 py-2 mb-16 border rounded text-gray-500/70 hover:bg-slate-50/90 transition"
+        >
           Vidi više
         </button>
       </div>

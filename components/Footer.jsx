@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="w-4/5">
           <Image className="w-28 md:w-32" src={assets.logo} alt="logo" />
           <p className="mt-6 text-sm">
-            Bojana Melemi je mala radionica prirodne njege kože. Ručno pravimo
+            Melemi Bojana je mala radionica prirodne njege kože. Ručno pravimo
             meleme i balzame u malim serijama, birajući provjerene sastojke i
             jasne formule. Fokusirani smo na kvalitet, sigurnost i jednostavnu
             svakodnevnu rutinu.
@@ -80,7 +80,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="py-4 text-center text-xs md:text-sm">
-        Copyright 2026 © Bojana Melemi Sva prava zadržana.
+        Copyright 2026 © Melemi Bojana Sva prava zadržana.
       </p>
     </footer>
   );

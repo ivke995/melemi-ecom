@@ -22,7 +22,7 @@ const PrivacyPolicy = () => {
                 <h3 className="text-lg font-medium text-gray-900">1. Uvod</h3>
                 <p className="mt-2">
                   Ova politika privatnosti objašnjava koje podatke prikupljamo
-                  na veb-sajtu Bojana Melemi, zašto ih koristimo i na koji način
+                  na veb-sajtu Melemi Bojana, zašto ih koristimo i na koji način
                   ih štitimo. Korištenjem sajta prihvatate ovu politiku.
                 </p>
               </div>
