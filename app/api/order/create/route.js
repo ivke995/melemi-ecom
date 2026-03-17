@@ -74,7 +74,7 @@ export async function POST(request) {
       normalizedCountry === "bosna i hercegovina" || normalizedCountry === "bih";
     const isSerbia = normalizedCountry === "srbija";
     const shippingCost = isBosnia ? 9 : isSerbia ? 22 : 0;
-    const taxAmount = Math.floor(amount * 0.02);
+    const taxAmount = 0;
 
     await inngest.send({
       name: "order/created",

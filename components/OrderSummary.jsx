@@ -38,8 +38,7 @@ const OrderSummary = () => {
     normalizedCountry === "bosna i hercegovina" || normalizedCountry === "bih";
   const isSerbia = normalizedCountry === "srbija";
   const shippingCost = isBosnia ? 9 : isSerbia ? 22 : 0;
-  const taxAmount = Math.floor(getCartAmount() * 0.02);
-  const totalAmount = getCartAmount() + taxAmount + shippingCost;
+  const totalAmount = getCartAmount() + shippingCost;
 
   const fetchUserAddresses = async () => {
     try {
@@ -321,12 +320,6 @@ const OrderSummary = () => {
             <p className="text-gray-600">Trošak dostave</p>
             <p className="font-medium text-gray-800">
               {selectedCountry ? `${shippingCost} ${currency}` : "—"}
-            </p>
-          </div>
-          <div className="flex justify-between">
-            <p className="text-gray-600">Porez (2%)</p>
-            <p className="font-medium text-gray-800">
-              {taxAmount} {currency}
             </p>
           </div>
           <div className="flex justify-between text-lg md:text-xl font-medium border-t pt-3">
