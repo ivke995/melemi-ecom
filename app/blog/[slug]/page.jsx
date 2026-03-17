@@ -55,6 +55,8 @@ const BlogPost = async ({ params }) => {
             <Image
               src={post.coverImage}
               alt={post.title}
+              width={768}
+              height={360}
               className="w-full h-[360px] object-cover"
               loading="lazy"
             />

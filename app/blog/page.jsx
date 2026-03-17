@@ -50,11 +50,13 @@ const Blog = async () => {
                 href={`/blog/${post.slug}`}
                 className="group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition"
               >
-                <div className="h-44 bg-gray-100">
+                <div className="relative h-44 bg-gray-100">
                   {post.coverImage ? (
                     <Image
                       src={post.coverImage}
                       alt={post.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
