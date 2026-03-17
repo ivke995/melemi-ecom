@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ReactMarkdown from "react-markdown";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 const formatDate = (value) => {
   if (!value) return "";
@@ -51,7 +52,7 @@ const BlogPost = async ({ params }) => {
 
         {post.coverImage && (
           <div className="mt-8 rounded-2xl overflow-hidden bg-gray-100 max-w-3xl mx-auto">
-            <img
+            <Image
               src={post.coverImage}
               alt={post.title}
               className="w-full h-[360px] object-cover"

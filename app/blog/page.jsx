@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
 import Link from "next/link";
 
 const formatDate = (value) => {
@@ -51,7 +52,7 @@ const Blog = async () => {
               >
                 <div className="h-44 bg-gray-100">
                   {post.coverImage ? (
-                    <img
+                    <Image
                       src={post.coverImage}
                       alt={post.title}
                       className="w-full h-full object-cover"
