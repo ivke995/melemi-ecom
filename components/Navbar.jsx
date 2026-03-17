@@ -14,6 +14,7 @@ const Navbar = () => {
   const navLinks = [
     { label: "Početna", href: "/" },
     { label: "Prodavnica", href: "/prodavnica" },
+    { label: "Blog", href: "/blog" },
     { label: "O nama", href: "/o-nama" },
     { label: "Kontakt", href: "/kontakt" },
   ];
