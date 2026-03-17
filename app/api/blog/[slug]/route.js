@@ -5,8 +5,9 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
   try {
     await connectDB();
+    const { slug } = await params;
     const post = await BlogPost.findOne({
-      slug: params.slug,
+      slug,
       isPublished: true,
     }).lean();
 
