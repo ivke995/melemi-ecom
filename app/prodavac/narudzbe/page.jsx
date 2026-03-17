@@ -23,12 +23,13 @@ const Orders = () => {
 
       if (data.success) {
         setOrders(data.orders);
-        setLoading(false);
       } else {
         toast.error(data.message);
       }
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,7 +62,10 @@ const Orders = () => {
                     <span className="font-medium">
                       {order.items
                         .map(
-                          (item) => item.product.name + ` x ${item.quantity}`,
+                          (item) =>
+                            `${item?.product?.name ?? "Proizvod nije dostupan"} x ${
+                              item?.quantity ?? 0
+                            }`,
                         )
                         .join(", ")}
                     </span>

@@ -6,9 +6,10 @@ import { usePathname } from 'next/navigation';
 
 const SideBar = () => {
     const pathname = usePathname()
-    const menuItems = [
+        const menuItems = [
         { name: 'Dodaj proizvod', path: '/prodavac', icon: assets.add_icon },
         { name: 'Lista proizvoda', path: '/prodavac/lista-proizvoda', icon: assets.product_list_icon },
+        { name: 'Blogovi', path: '/prodavac/blogovi', icon: assets.box_icon },
         { name: 'Narudžbe', path: '/prodavac/narudzbe', icon: assets.order_icon },
     ];
 
