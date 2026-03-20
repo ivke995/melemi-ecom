@@ -1,7 +1,29 @@
-"use client";
-import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+export const metadata = {
+  title: "Politika privatnosti",
+  description:
+    "Saznajte kako Melemi Bojana prikuplja, koristi i štiti vaše podatke na veb-sajtu.",
+  alternates: {
+    canonical: "/politika-privatnosti",
+  },
+  openGraph: {
+    title: "Politika privatnosti",
+    description:
+      "Saznajte kako Melemi Bojana prikuplja, koristi i štiti vaše podatke na veb-sajtu.",
+    url: `${baseUrl}/politika-privatnosti`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Politika privatnosti",
+    description:
+      "Saznajte kako Melemi Bojana prikuplja, koristi i štiti vaše podatke na veb-sajtu.",
+  },
+};
 
 const PrivacyPolicy = () => {
   return (

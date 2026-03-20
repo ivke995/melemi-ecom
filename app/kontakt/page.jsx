@@ -1,8 +1,30 @@
-"use client";
-import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { contactPhone, socialLinks } from "@/components/contactLinks";
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+export const metadata = {
+  title: "Kontakt",
+  description:
+    "Kontaktirajte Melemi Bojana za preporuku melema, informacije o narudžbama i podršku.",
+  alternates: {
+    canonical: "/kontakt",
+  },
+  openGraph: {
+    title: "Kontakt",
+    description:
+      "Kontaktirajte Melemi Bojana za preporuku melema, informacije o narudžbama i podršku.",
+    url: `${baseUrl}/kontakt`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Kontakt",
+    description:
+      "Kontaktirajte Melemi Bojana za preporuku melema, informacije o narudžbama i podršku.",
+  },
+};
 
 const Contact = () => {
   const contactEmail = "bojanamelemi@gmail.com";

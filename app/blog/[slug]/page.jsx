@@ -4,6 +4,8 @@ import ReactMarkdown from "react-markdown";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 const formatDate = (value) => {
   if (!value) return "";
   return new Intl.DateTimeFormat("sr-Latn-BA", {
@@ -11,6 +13,19 @@ const formatDate = (value) => {
     month: "long",
     year: "numeric",
   }).format(new Date(value));
+};
+
+const buildDescription = (post) => {
+  const raw = post?.excerpt || post?.content || "";
+  const cleaned = raw.replace(/\s+/g, " ").trim();
+  if (!cleaned) return "";
+  return cleaned.length > 160 ? `${cleaned.slice(0, 157)}...` : cleaned;
+};
+
+const toIsoDate = (value) => {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
 };
 
 const getPost = async (slug) => {
@@ -27,6 +42,47 @@ const getPost = async (slug) => {
   }
 };
 
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const post = await getPost(slug);
+
+  if (!post) {
+    return {
+      title: "Blog",
+    };
+  }
+
+  const description = buildDescription(post);
+  const publishedIso = toIsoDate(post.publishedAt || post.date);
+  const updatedIso = toIsoDate(post.date || post.publishedAt);
+  const images = post.coverImage
+    ? [{ url: post.coverImage, alt: post.title }]
+    : undefined;
+
+  return {
+    title: post.title,
+    description,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description,
+      url: `${baseUrl}/blog/${post.slug}`,
+      type: "article",
+      publishedTime: publishedIso,
+      modifiedTime: updatedIso,
+      images,
+    },
+    twitter: {
+      card: post.coverImage ? "summary_large_image" : "summary",
+      title: post.title,
+      description,
+      images: post.coverImage ? [post.coverImage] : undefined,
+    },
+  };
+}
+
 const BlogPost = async ({ params }) => {
   const { slug } = await params;
   const post = await getPost(slug);
@@ -35,9 +91,45 @@ const BlogPost = async ({ params }) => {
     notFound();
   }
 
+  const description = buildDescription(post);
+  const publishedIso = toIsoDate(post.publishedAt || post.date);
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description,
+    author: {
+      "@type": "Organization",
+      name: "Melemi Bojana",
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Melemi Bojana",
+      url: baseUrl,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/blog/${post.slug}`,
+    },
+  };
+
+  if (post.coverImage) {
+    blogSchema.image = [post.coverImage];
+  }
+
+  if (publishedIso) {
+    blogSchema.datePublished = publishedIso;
+    blogSchema.dateModified = publishedIso;
+  }
+
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <div className="px-6 md:px-16 lg:px-32 pt-12 pb-16">
         <div className="max-w-3xl mx-auto">
           <p className="text-sm text-gray-500 text-left">

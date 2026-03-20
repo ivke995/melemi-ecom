@@ -3,6 +3,30 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+export const metadata = {
+  title: "Blog",
+  description:
+    "Savjeti, vodiči i priče o prirodnoj njezi kože, melemima i tradicionalnoj biljnoj pripremi.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog",
+    description:
+      "Savjeti, vodiči i priče o prirodnoj njezi kože, melemima i tradicionalnoj biljnoj pripremi.",
+    url: `${baseUrl}/blog`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Blog",
+    description:
+      "Savjeti, vodiči i priče o prirodnoj njezi kože, melemima i tradicionalnoj biljnoj pripremi.",
+  },
+};
+
 const formatDate = (value) => {
   if (!value) return "";
   return new Intl.DateTimeFormat("sr-Latn-BA", {
