@@ -1,9 +1,31 @@
-"use client";
-import React from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import aboutUsImage from "@/assets/about_us.png";
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+export const metadata = {
+  title: "O nama",
+  description:
+    "Porodična proizvodnja prirodnih melema, ručno rađenih preparata i tradicionalne biljne njege.",
+  alternates: {
+    canonical: "/o-nama",
+  },
+  openGraph: {
+    title: "O nama",
+    description:
+      "Porodična proizvodnja prirodnih melema, ručno rađenih preparata i tradicionalne biljne njege.",
+    url: `${baseUrl}/o-nama`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "O nama",
+    description:
+      "Porodična proizvodnja prirodnih melema, ručno rađenih preparata i tradicionalne biljne njege.",
+  },
+};
 
 const AboutUs = () => {
   return (

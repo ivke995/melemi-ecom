@@ -5,7 +5,7 @@ import Footer from "@/components/seller/Footer";
 import { useAppContext } from "@/context/AppContext";
 import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const Orders = () => {
@@ -19,7 +19,7 @@ const Orders = () => {
     setExpandedOrderId((current) => (current === orderId ? null : orderId));
   };
 
-  const fetchSellerOrders = async () => {
+  const fetchSellerOrders = useCallback(async () => {
     try {
       const token = await getToken();
       const { data } = await axios.get("/api/order/seller-orders", {
@@ -36,13 +36,13 @@ const Orders = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [getToken]);
 
   useEffect(() => {
     if (user) {
         fetchSellerOrders();
     }
-  }, [user]);
+  }, [user, fetchSellerOrders]);
 
   return (
     <div className="flex-1 h-screen overflow-scroll flex flex-col justify-between text-sm">

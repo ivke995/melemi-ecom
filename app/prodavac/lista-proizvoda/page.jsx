@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
@@ -23,7 +23,7 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchSellerProduct = async () => {
+  const fetchSellerProduct = useCallback(async () => {
     try {
       const token = await getToken();
       const { data } = await axios.get("/api/product/seller-list", {
@@ -38,13 +38,13 @@ const ProductList = () => {
     } catch (error) {
       toast.error(error.message);
     }
-  };
+  }, [getToken]);
 
   useEffect(() => {
     if (user) {
       fetchSellerProduct();
     }
-  }, [user]);
+  }, [user, fetchSellerProduct]);
 
   const deleteProduct = async (productId) => {
     const confirmed = window.confirm("Da li ste sigurni da želite obrisati proizvod?");
