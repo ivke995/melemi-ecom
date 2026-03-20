@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "@/context/AppContext";
 import Loading from "@/components/Loading";
 import axios from "axios";
@@ -19,7 +19,7 @@ const SellerBlogList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchPosts = async () => {
+  const fetchPosts = useCallback(async () => {
     try {
       const token = await getToken();
       const { data } = await axios.get("/api/blog/seller-list", {
@@ -35,13 +35,13 @@ const SellerBlogList = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [getToken]);
 
   useEffect(() => {
     if (user) {
       fetchPosts();
     }
-  }, [user]);
+  }, [user, fetchPosts]);
 
   const deletePost = async (postId) => {
     const confirmed = window.confirm("Da li ste sigurni da želite obrisati blog?");

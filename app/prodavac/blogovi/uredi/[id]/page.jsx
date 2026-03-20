@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "@/context/AppContext";
 import { useParams } from "next/navigation";
 import axios from "axios";
@@ -18,7 +18,7 @@ const EditBlogPost = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     try {
       const token = await getToken();
       const { data } = await axios.get(`/api/blog/id/${id}`, {
@@ -40,13 +40,13 @@ const EditBlogPost = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [getToken, id]);
 
   useEffect(() => {
     if (user && id) {
       fetchPost();
     }
-  }, [user, id]);
+  }, [user, id, fetchPost]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -38,8 +38,30 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="sr-Latn">
-        <body className={`${outfit.className} antialiased text-gray-700`}>
+      <html lang="sr-Latn" suppressHydrationWarning>
+        <body
+          className={`${outfit.className} antialiased text-gray-700`}
+          suppressHydrationWarning
+        >
+          <Script id="strip-extension-attrs" strategy="beforeInteractive">
+            {`(() => {
+  const patterns = [/^bis_/i, /^__processed_/i];
+  const strip = (node) => {
+    if (!node || node.nodeType !== 1) return;
+    const attrs = Array.from(node.attributes || []);
+    for (const attr of attrs) {
+      if (patterns.some((pattern) => pattern.test(attr.name))) {
+        node.removeAttribute(attr.name);
+      }
+    }
+    const children = node.children || [];
+    for (const child of children) {
+      strip(child);
+    }
+  };
+  strip(document.documentElement);
+})();`}
+          </Script>
           {gaId && (
             <>
               <Script

@@ -1,0 +1,152 @@
+[
+  {
+    "_id": "melem-kantarion",
+    "slug": "melem-kantarion",
+    "name": "Melem Kantarion",
+    "description": "Za njegu hrapave koze lica, kod opekotina, otvorenih rana i svjezih povreda, kao i kod otecenih zlijezda, bolova u ledjima, isijasa i reume.",
+    "price": 8,
+    "offerPrice": 8,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Melem",
+    "date": 1738667236865
+  },
+  {
+    "_id": "sirup-protiv-kaslja",
+    "slug": "sirup-protiv-kaslja",
+    "name": "Sirup protiv kaslja",
+    "description": "Na bazi meda i vrhova bora, za smirivanje nadrazenog grla i ublazavanje kaslja. Pomaze kod prehlade, olaksava disanje i doprinosi prirodnom oporavku disajnih puteva.",
+    "price": 12,
+    "offerPrice": 12,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Sirup",
+    "date": 1738667310300
+  },
+  {
+    "_id": "melem-gavez",
+    "slug": "melem-gavez",
+    "name": "Melem Gavez",
+    "description": "Za njegu koze kod otvorenih i gnojnih rana, cireva i kurjih ociju, kao i kod otvrdlina nastalih uslijed gihta. Koristi se kod istegnuca misica, bolnih zglobova i prosirenih vena sa otvorenim ranama, te doprinosi brzem oporavku koze i tkiva.",
+    "price": 8,
+    "offerPrice": 8,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Melem",
+    "date": 1738667366224
+  },
+  {
+    "_id": "melem-bosiljak",
+    "slug": "melem-bosiljak",
+    "name": "Melem Bosiljak",
+    "description": "Koristi se za svakodnevnu njegu lica. Pomaze kod uklanjanja akni i mitisera, smanjuje pojavu fleka na kozi i doprinosi ujednacavanju tena. Idealan za odrzavanje ciste, svjeze i njegovane koze.",
+    "price": 8,
+    "offerPrice": 8,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Melem",
+    "date": 1738667417511
+  },
+  {
+    "_id": "melem-lice-i-tijelo",
+    "slug": "melem-lice-i-tijelo",
+    "name": "Melem Lice i Tijelo",
+    "description": "Koristi se svakodnevno za njegu lica i tijela. Pomaze kod ispucale koze, ogrebotina i rana, kao i kod akni, herpesa i mladeza. Smanjuje pojavu fleka i doprinosi zdravijem, njegovanom izgledu koze.",
+    "price": 8,
+    "offerPrice": 8,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Melem",
+    "date": 1738667503075
+  },
+  {
+    "_id": "melem-neven",
+    "slug": "melem-neven",
+    "name": "Melem Neven",
+    "description": "Koristi se za lijecenje hemoroida, kao i kod prosirenih vena. Ublazava upalu i smanjuje crvenilo, te doprinosi brzem zarastanju rana.",
+    "price": 8,
+    "offerPrice": 8,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Melem",
+    "date": 1738667788883
+  },
+  {
+    "_id": "melem-protiv-hemoroida",
+    "slug": "melem-protiv-hemoroida",
+    "name": "Melem protiv Hemoroida",
+    "description": "Za ublazavanje tegoba kod hemoroida. Smanjuje upalu, bol i iritaciju, te doprinosi brzem zarastanju i regeneraciji koze. Pomaze kod nelagode i osjecaja peckanja, pruzajuci olaksanje i njegu.",
+    "price": 8,
+    "offerPrice": 8,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Melem",
+    "date": 1738667977644
+  },
+  {
+    "_id": "melem-hajducka-trava",
+    "slug": "melem-hajducka-trava",
+    "name": "Melem Hajducka Trava",
+    "description": "Za njegu kod hemoroida i dekubitusa, kao i za zarastanje rana i cireva. Pogodan za suhu i osjetljivu kozu, pomaze u smanjenju iritacije i doprinosi brzem oporavku koze.",
+    "price": 8,
+    "offerPrice": 8,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Melem",
+    "date": 1738668086331
+  },
+  {
+    "_id": "melem-smilje",
+    "slug": "melem-smilje",
+    "name": "Melem Smilje",
+    "description": "Za regeneraciju, njegu i hidrataciju koze. Pomaze kod ostecene i suhe koze, ublazava bore i doprinosi ujednacavanju tena. Djeluje protiv podocnjaka, smanjuje natecenost i pomaze kod starackih pjega, pruzajuci svjez i njegovan izgled koze.",
+    "price": 11,
+    "offerPrice": 11,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Melem",
+    "date": 1738668126660
+  },
+  {
+    "_id": "nocna-krema",
+    "slug": "nocna-krema",
+    "name": "Nocna krema",
+    "description": "Za regeneraciju i njegu koze tokom noci. Hrani kozu, smanjuje pojavu bora i poboljsava elasticnost, ostavljajuci kozu mekanom, glatkom i odmornom.",
+    "price": 13,
+    "offerPrice": 13,
+    "showDiscount": false,
+    "isActive": true,
+    "image": [
+      "lice_tijelo_objava.png"
+    ],
+    "category": "Krema",
+    "date": 1738668619198
+  }
+]

@@ -1,6 +1,6 @@
 import { useAppContext } from "@/context/AppContext";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const OrderSummary = () => {
@@ -40,7 +40,7 @@ const OrderSummary = () => {
   const shippingCost = isBosnia ? 9 : isSerbia ? 22 : 0;
   const totalAmount = getCartAmount() + shippingCost;
 
-  const fetchUserAddresses = async () => {
+  const fetchUserAddresses = useCallback(async () => {
     try {
       const token = await getToken();
       const { data } = await axios.get("/api/user/get-address", {
@@ -59,7 +59,7 @@ const OrderSummary = () => {
     } catch (error) {
       toast.error(error.message);
     }
-  };
+  }, [getToken]);
 
   const handleAddressSelect = (address) => {
     setSelectedAddress(address);
@@ -128,7 +128,7 @@ const OrderSummary = () => {
     if (user) {
       fetchUserAddresses();
     }
-  }, [user]);
+  }, [user, fetchUserAddresses]);
 
   return (
     <div className="w-full md:w-96 bg-gray-500/5 p-5">

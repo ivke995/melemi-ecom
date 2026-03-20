@@ -1,5 +1,7 @@
 import connectDB from "@/config/db";
 import Product from "@/models/Product";
+import productCatalog from "@/data/products.json";
+import liceTijeloObjavaImage from "@/assets/lice_tijelo_objava.png";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductDetailsClient from "@/components/ProductDetailsClient";
@@ -15,12 +17,36 @@ const buildDescription = (value) => {
   return cleaned.length > 160 ? `${cleaned.slice(0, 157)}...` : cleaned;
 };
 
+const catalogImageMap = {
+  "lice_tijelo_objava.png": liceTijeloObjavaImage,
+};
+
+const isAbsoluteUrl = (value) => /^https?:\/\//i.test(value || "");
+
 const getProductImages = (product) => {
   if (!product) return [];
   if (Array.isArray(product.image)) {
     return product.image.filter(Boolean);
   }
   return product.image ? [product.image] : [];
+};
+
+const resolveCatalogImages = (product) => {
+  const images = getProductImages(product);
+  if (!images.length) return [];
+  return images
+    .map((image) => {
+      if (typeof image === "string") {
+        if (isAbsoluteUrl(image)) return image;
+        const mapped = catalogImageMap[image];
+        return mapped?.src ? new URL(mapped.src, baseUrl).toString() : null;
+      }
+      if (image?.src) {
+        return new URL(image.src, baseUrl).toString();
+      }
+      return null;
+    })
+    .filter(Boolean);
 };
 
 const normalizeProduct = (product) => {
@@ -34,26 +60,19 @@ const normalizeProduct = (product) => {
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  await connectDB();
-  const products = await Product.find({
-    isActive: { $ne: false },
-    slug: { $exists: true, $ne: "" },
-  })
-    .select("slug")
-    .lean();
-
-  return products.map((product) => ({ slug: product.slug }));
+  const products = Array.isArray(productCatalog) ? productCatalog : [];
+  return products
+    .filter((product) => product?.slug && product?.isActive !== false)
+    .map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
-  await connectDB();
-  let product = await Product.findOne({ slug }).lean();
-
-  if (!product && isMongoId(slug)) {
-    product = await Product.findById(slug).lean();
-  }
+  const products = Array.isArray(productCatalog) ? productCatalog : [];
+  const product = products.find(
+    (item) => item?.slug === slug || item?._id === slug
+  );
 
   if (!product) {
     return {
@@ -62,7 +81,7 @@ export async function generateMetadata({ params }) {
   }
 
   const description = buildDescription(product.description);
-  const images = getProductImages(product);
+  const images = resolveCatalogImages(product);
   const canonicalSlug = product.slug || slug;
 
   return {
@@ -75,7 +94,7 @@ export async function generateMetadata({ params }) {
       title: product.name,
       description,
       url: `${baseUrl}/proizvod/${canonicalSlug}`,
-      type: "product",
+      type: "website",
       images: images.length ? images : undefined,
     },
     twitter: {
@@ -88,7 +107,7 @@ export async function generateMetadata({ params }) {
 }
 
 const ProductPage = async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
 
   await connectDB();
   let product = await Product.findOne({ slug }).lean();

@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import { useAppContext } from "@/context/AppContext";
 import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const MyOrders = () => {
@@ -15,7 +15,7 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
       const token = await getToken();
       const { data } = await axios.get("/api/order/list", {
@@ -30,13 +30,13 @@ const MyOrders = () => {
     } catch (error) {
       toast.error(error.message);
     }
-  };
+  }, [getToken]);
 
   useEffect(() => {
     if (user) {
       fetchOrders();
     }
-  }, [user]);
+  }, [user, fetchOrders]);
 
   return (
     <>
